@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pRp-EN-FAm">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+    </dependencies>
+    <scenes>
+        <!--Popover View Controller-->
+        <scene sceneID="kbO-CV-6rB">
+            <objects>
+                <viewController id="pRp-EN-FAm" customClass="PopoverViewController" customModule="FJWeibo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b4v-fF-67D"/>
+                        <viewControllerLayoutGuide type="bottom" id="pUq-OB-UGD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="jGy-1C-WC9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="popover_background" translatesAutoresizingMaskIntoConstraints="NO" id="vI9-Rm-GkV">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cjf-IK-oGi">
+                                <rect key="frame" x="20" y="20" width="560" height="560"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="cjf-IK-oGi" firstAttribute="leading" secondItem="jGy-1C-WC9" secondAttribute="leading" constant="20" id="Brn-LY-dZu"/>
+                            <constraint firstItem="pUq-OB-UGD" firstAttribute="top" secondItem="cjf-IK-oGi" secondAttribute="bottom" constant="20" id="Ipw-Ss-pcP"/>
+                            <constraint firstItem="pUq-OB-UGD" firstAttribute="top" secondItem="vI9-Rm-GkV" secondAttribute="bottom" id="PNd-pn-NP1"/>
+                            <constraint firstAttribute="trailing" secondItem="vI9-Rm-GkV" secondAttribute="trailing" id="TJy-5a-94A"/>
+                            <constraint firstItem="vI9-Rm-GkV" firstAttribute="leading" secondItem="jGy-1C-WC9" secondAttribute="leading" id="gYp-gR-Jb7"/>
+                            <constraint firstItem="vI9-Rm-GkV" firstAttribute="top" secondItem="jGy-1C-WC9" secondAttribute="top" id="k4V-aj-ftq"/>
+                            <constraint firstAttribute="trailing" secondItem="cjf-IK-oGi" secondAttribute="trailing" constant="20" id="msw-9p-KFu"/>
+                            <constraint firstItem="cjf-IK-oGi" firstAttribute="top" secondItem="jGy-1C-WC9" secondAttribute="top" constant="20" id="zSe-SK-aiw"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UMe-OG-H6L" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-21" y="288"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="popover_background" width="217" height="49"/>
+    </resources>
+</document>

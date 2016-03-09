@@ -78,9 +78,15 @@ class HomeTableViewController: BaseTableViewController {
     
      func leftItemClick(){
         print(__FUNCTION__)
+       
     }
      func rightItemClick(){
-        print(__FUNCTION__)
+//        print(__FUNCTION__)
+        
+        let sb = UIStoryboard(name: "QRCodeViewController", bundle: nil)
+        let vc = sb.instantiateInitialViewController()
+        
+        presentViewController(vc!, animated: true, completion: nil)
     }
     
     //记录菜单是否展开

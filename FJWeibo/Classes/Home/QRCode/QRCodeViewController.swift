@@ -9,7 +9,8 @@
 import UIKit
 
 class QRCodeViewController: UIViewController {
-
+    //底部tabBar
+    @IBOutlet weak var customTabBar: UITabBar!
     @IBAction func closeBtnClick(sender: AnyObject) {
         
         dismissViewControllerAnimated(true, completion: nil)
@@ -19,13 +20,10 @@ class QRCodeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        customTabBar.selectedItem = customTabBar.items![0]
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+
     
 
     /*

@@ -34,19 +34,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1b7-LU-ubK">
-                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="49" id="4qJ-kR-3Jg"/>
-                                </constraints>
-                                <items>
-                                    <tabBarItem title="二维码" image="qrcode_tabbar_icon_qrcode" id="PDE-cH-yVQ"/>
-                                    <tabBarItem title="条形码" image="qrcode_tabbar_icon_barcode" id="75G-ya-pLg"/>
-                                </items>
-                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </tabBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hg1-wA-f23">
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hg1-wA-f23">
                                 <rect key="frame" x="150" y="150" width="300" height="300"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qrcode_border" translatesAutoresizingMaskIntoConstraints="NO" id="WHp-2d-6MN">
@@ -56,7 +44,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                     </imageView>
                                 </subviews>
-                                <color key="backgroundColor" red="0.65936193320000003" green="1" blue="0.95003121729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="05i-eY-CVd" firstAttribute="width" secondItem="Hg1-wA-f23" secondAttribute="width" id="1Bg-fc-OPB"/>
                                     <constraint firstItem="WHp-2d-6MN" firstAttribute="leading" secondItem="Hg1-wA-f23" secondAttribute="leading" id="1Cs-GU-nTm"/>
@@ -70,8 +58,20 @@
                                     <constraint firstAttribute="bottom" secondItem="WHp-2d-6MN" secondAttribute="bottom" id="s5V-Ga-dwT"/>
                                 </constraints>
                             </view>
+                            <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1b7-LU-ubK">
+                                <rect key="frame" x="0.0" y="551" width="600" height="49"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="49" id="4qJ-kR-3Jg"/>
+                                </constraints>
+                                <items>
+                                    <tabBarItem title="二维码" image="qrcode_tabbar_icon_qrcode" id="PDE-cH-yVQ"/>
+                                    <tabBarItem tag="1" title="条形码" image="qrcode_tabbar_icon_barcode" id="75G-ya-pLg"/>
+                                </items>
+                                <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </tabBar>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Hg1-wA-f23" firstAttribute="centerX" secondItem="MnZ-mM-5sG" secondAttribute="centerX" id="5gU-c6-fhN"/>
                             <constraint firstItem="Q06-2I-HrD" firstAttribute="top" secondItem="1b7-LU-ubK" secondAttribute="bottom" id="D1j-vr-0eB"/>
@@ -86,10 +86,18 @@
                                 <action selector="closeBtnClick:" destination="qu1-7U-Juo" id="aZL-IT-ZZ4"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="相册" id="IKi-iq-Ijg"/>
+                        <barButtonItem key="rightBarButtonItem" title="相册" id="IKi-iq-Ijg">
+                            <connections>
+                                <action selector="photoBtnClick:" destination="qu1-7U-Juo" id="JDu-TS-6rJ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="containerHeightCons" destination="jLv-Kp-xRm" id="5bn-9X-PJd"/>
+                        <outlet property="containerView" destination="MnZ-mM-5sG" id="9H4-Fp-Chq"/>
                         <outlet property="customTabBar" destination="1b7-LU-ubK" id="zU0-Q9-IRo"/>
+                        <outlet property="scanLineCons" destination="LIP-3q-F4e" id="5ne-r2-1GA"/>
+                        <outlet property="scanLineView" destination="05i-eY-CVd" id="QiA-2a-fXt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DB5-cq-rzq" userLabel="First Responder" sceneMemberID="firstResponder"/>

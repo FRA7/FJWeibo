@@ -71,17 +71,28 @@
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </tabBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请扫描" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5c8-3V-E1Q">
-                                <rect key="frame" x="274.5" y="94" width="51" height="20.5"/>
+                                <rect key="frame" x="274" y="94" width="51" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ThG-Gd-6Do">
+                                <rect key="frame" x="270" y="491" width="60" height="30"/>
+                                <state key="normal" title="我的名片">
+                                    <color key="titleColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="NdL-DI-2bf" kind="show" id="FuG-Wd-3Te"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Hg1-wA-f23" firstAttribute="centerX" secondItem="MnZ-mM-5sG" secondAttribute="centerX" id="5gU-c6-fhN"/>
                             <constraint firstItem="5c8-3V-E1Q" firstAttribute="top" secondItem="hUm-1O-Aip" secondAttribute="bottom" constant="30" id="8t3-qI-JrK"/>
+                            <constraint firstItem="ThG-Gd-6Do" firstAttribute="centerX" secondItem="MnZ-mM-5sG" secondAttribute="centerX" id="Bv8-zD-Yvy"/>
                             <constraint firstItem="Q06-2I-HrD" firstAttribute="top" secondItem="1b7-LU-ubK" secondAttribute="bottom" id="D1j-vr-0eB"/>
+                            <constraint firstItem="1b7-LU-ubK" firstAttribute="top" secondItem="ThG-Gd-6Do" secondAttribute="bottom" constant="30" id="Fve-Kx-laW"/>
                             <constraint firstItem="5c8-3V-E1Q" firstAttribute="centerX" secondItem="MnZ-mM-5sG" secondAttribute="centerX" id="IhP-g3-gWB"/>
                             <constraint firstItem="1b7-LU-ubK" firstAttribute="leading" secondItem="MnZ-mM-5sG" secondAttribute="leading" id="RZf-kc-T9O"/>
                             <constraint firstAttribute="trailing" secondItem="1b7-LU-ubK" secondAttribute="trailing" id="Rs8-98-jeV"/>
@@ -111,7 +122,41 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DB5-cq-rzq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="209" y="-289"/>
+            <point key="canvasLocation" x="301" y="-320"/>
+        </scene>
+        <!--Code Card View Controller-->
+        <scene sceneID="ioe-Sq-1Zr">
+            <objects>
+                <viewController id="NdL-DI-2bf" customClass="QRCodeCardViewController" customModule="FJWeibo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ngv-eQ-DMj"/>
+                        <viewControllerLayoutGuide type="bottom" id="UNq-dI-qMU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="e4d-Zw-Ob9">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="c7x-5y-OEc">
+                                <rect key="frame" x="150" y="150" width="300" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="Gle-OJ-Qqs"/>
+                                    <constraint firstAttribute="width" constant="300" id="jms-aW-0Ly"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="c7x-5y-OEc" firstAttribute="centerY" secondItem="e4d-Zw-Ob9" secondAttribute="centerY" id="IWQ-cO-w0H"/>
+                            <constraint firstItem="c7x-5y-OEc" firstAttribute="centerX" secondItem="e4d-Zw-Ob9" secondAttribute="centerX" id="dcN-Pc-54s"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="customImageView" destination="c7x-5y-OEc" id="Cfe-nh-4IG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Y7e-oi-c4s" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="997" y="-318"/>
         </scene>
     </scenes>
     <resources>

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		150ABD4D1C848A5F00855E09 /* UITabBarButtonItem+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150ABD4C1C848A5F00855E09 /* UITabBarButtonItem+Category.swift */; };
 		150ABD4F1C84930800855E09 /* TitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150ABD4E1C84930800855E09 /* TitleButton.swift */; };
+		150F43AD1C91B64300797F24 /* QRCodeCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150F43AC1C91B64300797F24 /* QRCodeCardViewController.swift */; };
 		1532DF5A1C900A4200170377 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1532DF591C900A4200170377 /* QRCodeViewController.swift */; };
 		1532DF5C1C900A5700170377 /* QRCodeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1532DF5B1C900A5700170377 /* QRCodeViewController.storyboard */; };
 		1570C7941C7FFB3E000F0437 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7931C7FFB3E000F0437 /* AppDelegate.swift */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		150ABD4C1C848A5F00855E09 /* UITabBarButtonItem+Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITabBarButtonItem+Category.swift"; sourceTree = "<group>"; };
 		150ABD4E1C84930800855E09 /* TitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleButton.swift; sourceTree = "<group>"; };
+		150F43AC1C91B64300797F24 /* QRCodeCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeCardViewController.swift; sourceTree = "<group>"; };
 		1532DF591C900A4200170377 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		1532DF5B1C900A5700170377 /* QRCodeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QRCodeViewController.storyboard; sourceTree = "<group>"; };
 		1570C7901C7FFB3E000F0437 /* FJWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FJWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,6 +113,7 @@
 			children = (
 				1532DF591C900A4200170377 /* QRCodeViewController.swift */,
 				1532DF5B1C900A5700170377 /* QRCodeViewController.storyboard */,
+				150F43AC1C91B64300797F24 /* QRCodeCardViewController.swift */,
 			);
 			path = QRCode;
 			sourceTree = "<group>";
@@ -409,6 +412,7 @@
 				1570C7CC1C800320000F0437 /* HomeTableViewController.swift in Sources */,
 				1589C1661C80838D00C27D73 /* VisitorView.swift in Sources */,
 				1570C7D71C8040B9000F0437 /* NullViewController.swift in Sources */,
+				150F43AD1C91B64300797F24 /* QRCodeCardViewController.swift in Sources */,
 				1589C16A1C808AEA00C27D73 /* UIView+AutoLayout.swift in Sources */,
 				15EE82E11C8539DE004C1984 /* PopoverPresentationController.swift in Sources */,
 				150ABD4D1C848A5F00855E09 /* UITabBarButtonItem+Category.swift in Sources */,

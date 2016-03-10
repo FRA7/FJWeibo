@@ -165,60 +165,98 @@ extension QRCodeViewController:AVCaptureMetadataOutputObjectsDelegate{
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
         
+
+        clearCornerLayer()
+        
+        
+        for objc in metadataObjects{
+            //1.取出结果
+            let temp = objc as! AVMetadataMachineReadableCodeObject
+            print(temp.stringValue)
+            resultLabel.text = temp.stringValue
+            
+            //2.给二维码描边
+           drawCorners(objc)
+        }
+        
+    }
+    /**
+     绘制二维码边
+     - parameter objc: 扫描到的结果对象
+     */
+    private func drawCorners(objc: AnyObject){
+        //1.利用预览图层将corners转换为我们可识别的类型
+        let metadataObject = previewLayer.transformedMetadataObjectForMetadataObject(objc as! AVMetadataObject)
+        
+        //2.取出转换之后的corners
+        let corners = (metadataObject as! AVMetadataMachineReadableCodeObject).corners
+        
+        //3.遍历字典数组, 将字典数组中的字典转换为CGPoint
+        guard let path = creatPath(corners) else{
+            return
+        }
+        
+        
+        //4.绘图
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.lineWidth = 5
+        shapeLayer.strokeColor = UIColor.redColor().CGColor
+        shapeLayer.fillColor = UIColor.clearColor().CGColor
+        shapeLayer.path = path.CGPath
+        
+        containerLayer.addSublayer(shapeLayer)
+
+    }
+    /**
+     生成绘制路径
+     - parameter corners: 扫描到的对象的坐标数组
+     - returns: 绘制路径
+     */
+    private func creatPath(corners: [AnyObject]?) -> UIBezierPath?{
+        
+        guard let array = corners else{
+            return nil
+        }
+        
+        if array.count == 0{
+            return nil
+        }
+        
+        var index = 0
+        var point = CGPointZero
+        
+        CGPointMakeWithDictionaryRepresentation((array[index] as! CFDictionary), &point)
+        index++
+        
+        let path = UIBezierPath()
+        path.moveToPoint(point)
+        
+        while index < array.count{
+            CGPointMakeWithDictionaryRepresentation((array[index] as! CFDictionary), &point)
+            path.addLineToPoint(point)
+            index++
+            
+        }
+        
+        path.closePath()
+        
+        return path
+
+    }
+    
+    /**
+     清空之前的线
+     */
+    private func clearCornerLayer(){
         //清空之前的线段
         if let sublayers = containerLayer.sublayers{
             for layer in sublayers{
                 layer.removeFromSuperlayer()
             }
         }
-        
-        
-        
-        for objc in metadataObjects{
-            let temp = objc as! AVMetadataMachineReadableCodeObject
-            
-            print(temp.stringValue)
-            resultLabel.text = temp.stringValue
-            
-            
-            //1.利用预览图层将corners转换为我们可识别的类型
-            let metadataObject = previewLayer.transformedMetadataObjectForMetadataObject(objc as! AVMetadataObject)
-            
-            //2.取出转换之后的corners
-            let corners = (metadataObject as! AVMetadataMachineReadableCodeObject).corners
-            
-            //3.遍历字典数组, 将字典数组中的字典转换为CGPoint
-            var index = 0
-            var point = CGPointZero
-            
-            CGPointMakeWithDictionaryRepresentation((corners[index] as! CFDictionary), &point)
-            index++
-            
-            let path = UIBezierPath()
-            path.moveToPoint(point)
-            
-            while index < corners.count{
-                CGPointMakeWithDictionaryRepresentation((corners[index] as! CFDictionary), &point)
-                path.addLineToPoint(point)
-                index++
-                
-            }
-            
-            path.closePath()
-            
-            //4.绘图
-            let shapeLayer = CAShapeLayer()
-            shapeLayer.lineWidth = 5
-            shapeLayer.strokeColor = UIColor.redColor().CGColor
-            shapeLayer.fillColor = UIColor.clearColor().CGColor
-            shapeLayer.path = path.CGPath
-            
-            containerLayer.addSublayer(shapeLayer)    
-            
-        }
-        
     }
-   
+    
+    
 }
 
 //MARK: - UITabBarDelegate

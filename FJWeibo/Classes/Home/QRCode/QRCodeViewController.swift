@@ -25,19 +25,28 @@ class QRCodeViewController: UIViewController {
     @IBOutlet weak var customTabBar: UITabBar!
     
     
-    @IBAction func photoBtnClick(sender: AnyObject) {
-        
-        print(__FUNCTION__)
-    }
-
-    
     //关闭按钮点击
     @IBAction func closeBtnClick(sender: AnyObject) {
         
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
-    
+    //相册按钮点击
+    @IBAction func photoBtnClick(sender: AnyObject) {
+        
+//        print(__FUNCTION__)
+        
+        //1.判断所选资源能否打开
+        if !UIImagePickerController.isSourceTypeAvailable(.PhotoLibrary){
+            return
+        }
+        //2.创建图片浏览器
+        let picker = UIImagePickerController()
+        picker.sourceType = .PhotoLibrary
+        picker.delegate = self
+        
+        //3.弹出图片浏览器
+        presentViewController(picker, animated: true, completion: nil)
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -126,6 +135,40 @@ class QRCodeViewController: UIViewController {
     
 }
 
+extension QRCodeViewController:UINavigationControllerDelegate,UIImagePickerControllerDelegate{
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        //1.取出选中图片
+
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else{
+            return
+        }
+                print(image)
+        guard let ciImage = CIImage(image: image) else{
+            return
+        }
+
+        
+        //2.创建一个探测器
+        let dict = [CIDetectorAccuracy:CIDetectorAccuracyHigh]
+        let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: dict)
+        
+        //3.利用探测器探测结果
+        let features = detector.featuresInImage(ciImage)
+        print(features)
+        //4.取出结果
+        for result in features{
+//            print((result as! CIQRCodeFeature).messageString)
+            print(result)
+        }
+        //5.只要实现代理方法, 就需要我们自己手动关闭浏览器
+        picker.dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
+    
+}
+
    //MARK: - 二维码相关
 extension QRCodeViewController:AVCaptureMetadataOutputObjectsDelegate{
     
@@ -172,7 +215,7 @@ extension QRCodeViewController:AVCaptureMetadataOutputObjectsDelegate{
         for objc in metadataObjects{
             //1.取出结果
             let temp = objc as! AVMetadataMachineReadableCodeObject
-            print(temp.stringValue)
+//            print(temp.stringValue)
             resultLabel.text = temp.stringValue
             
             //2.给二维码描边

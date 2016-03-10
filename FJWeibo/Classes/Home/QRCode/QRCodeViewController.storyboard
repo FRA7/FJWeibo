@@ -8,7 +8,7 @@
         <!--Navigation Controller-->
         <scene sceneID="jtA-gR-Igz">
             <objects>
-                <navigationController id="aZQ-l8-PO6" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="aZQ-l8-PO6" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="8V8-XK-wTm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -20,7 +20,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="od0-5B-YI4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-497" y="-294"/>
+            <point key="canvasLocation" x="-371" y="-320"/>
         </scene>
         <!--Code View Controller-->
         <scene sceneID="Utn-UX-D5h">

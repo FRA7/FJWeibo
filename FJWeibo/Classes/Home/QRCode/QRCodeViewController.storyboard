@@ -70,11 +70,19 @@
                                 </items>
                                 <color key="barTintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </tabBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请扫描" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5c8-3V-E1Q">
+                                <rect key="frame" x="274.5" y="94" width="51" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.5" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Hg1-wA-f23" firstAttribute="centerX" secondItem="MnZ-mM-5sG" secondAttribute="centerX" id="5gU-c6-fhN"/>
+                            <constraint firstItem="5c8-3V-E1Q" firstAttribute="top" secondItem="hUm-1O-Aip" secondAttribute="bottom" constant="30" id="8t3-qI-JrK"/>
                             <constraint firstItem="Q06-2I-HrD" firstAttribute="top" secondItem="1b7-LU-ubK" secondAttribute="bottom" id="D1j-vr-0eB"/>
+                            <constraint firstItem="5c8-3V-E1Q" firstAttribute="centerX" secondItem="MnZ-mM-5sG" secondAttribute="centerX" id="IhP-g3-gWB"/>
                             <constraint firstItem="1b7-LU-ubK" firstAttribute="leading" secondItem="MnZ-mM-5sG" secondAttribute="leading" id="RZf-kc-T9O"/>
                             <constraint firstAttribute="trailing" secondItem="1b7-LU-ubK" secondAttribute="trailing" id="Rs8-98-jeV"/>
                             <constraint firstItem="Hg1-wA-f23" firstAttribute="centerY" secondItem="MnZ-mM-5sG" secondAttribute="centerY" id="uRI-PA-JOQ"/>
@@ -96,6 +104,7 @@
                         <outlet property="containerHeightCons" destination="jLv-Kp-xRm" id="5bn-9X-PJd"/>
                         <outlet property="containerView" destination="MnZ-mM-5sG" id="9H4-Fp-Chq"/>
                         <outlet property="customTabBar" destination="1b7-LU-ubK" id="zU0-Q9-IRo"/>
+                        <outlet property="resultLabel" destination="5c8-3V-E1Q" id="IAT-mV-9E3"/>
                         <outlet property="scanLineCons" destination="LIP-3q-F4e" id="5ne-r2-1GA"/>
                         <outlet property="scanLineView" destination="05i-eY-CVd" id="QiA-2a-fXt"/>
                     </connections>

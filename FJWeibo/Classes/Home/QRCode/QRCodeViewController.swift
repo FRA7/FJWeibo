@@ -11,6 +11,8 @@ import AVFoundation
 
 class QRCodeViewController: UIViewController {
     
+    //扫描结果
+    @IBOutlet weak var resultLabel: UILabel!
     //扫描视图view
     @IBOutlet weak var scanLineView: UIImageView!
     //扫描框高度约束
@@ -117,6 +119,8 @@ class QRCodeViewController: UIViewController {
         return layer
     }()
     
+    //用于保存描边的图层
+    private lazy var containerLayer = CALayer()
     
   
     
@@ -147,7 +151,12 @@ extension QRCodeViewController:AVCaptureMetadataOutputObjectsDelegate{
         previewLayer.frame = view.bounds
         view.layer.insertSublayer(previewLayer, atIndex: 0)
         
-        //7.开始扫描二维码
+        //7.设置描边图层
+        containerLayer.frame = view.frame
+        containerLayer.backgroundColor = UIColor.clearColor().CGColor
+        view.layer.addSublayer(containerLayer)
+        
+        //8.开始扫描二维码
         session.startRunning()
         
     }
@@ -156,16 +165,60 @@ extension QRCodeViewController:AVCaptureMetadataOutputObjectsDelegate{
     
     func captureOutput(captureOutput: AVCaptureOutput!, didOutputMetadataObjects metadataObjects: [AnyObject]!, fromConnection connection: AVCaptureConnection!) {
         
+        //清空之前的线段
+        if let sublayers = containerLayer.sublayers{
+            for layer in sublayers{
+                layer.removeFromSuperlayer()
+            }
+        }
+        
+        
+        
         for objc in metadataObjects{
             let temp = objc as! AVMetadataMachineReadableCodeObject
             
             print(temp.stringValue)
+            resultLabel.text = temp.stringValue
+            
+            
+            //1.利用预览图层将corners转换为我们可识别的类型
+            let metadataObject = previewLayer.transformedMetadataObjectForMetadataObject(objc as! AVMetadataObject)
+            
+            //2.取出转换之后的corners
+            let corners = (metadataObject as! AVMetadataMachineReadableCodeObject).corners
+            
+            //3.遍历字典数组, 将字典数组中的字典转换为CGPoint
+            var index = 0
+            var point = CGPointZero
+            
+            CGPointMakeWithDictionaryRepresentation((corners[index] as! CFDictionary), &point)
+            index++
+            
+            let path = UIBezierPath()
+            path.moveToPoint(point)
+            
+            while index < corners.count{
+                CGPointMakeWithDictionaryRepresentation((corners[index] as! CFDictionary), &point)
+                path.addLineToPoint(point)
+                index++
+                
+            }
+            
+            path.closePath()
+            
+            //4.绘图
+            let shapeLayer = CAShapeLayer()
+            shapeLayer.lineWidth = 5
+            shapeLayer.strokeColor = UIColor.redColor().CGColor
+            shapeLayer.fillColor = UIColor.clearColor().CGColor
+            shapeLayer.path = path.CGPath
+            
+            containerLayer.addSublayer(shapeLayer)    
+            
         }
         
-        
     }
-    
-    
+   
 }
 
 //MARK: - UITabBarDelegate

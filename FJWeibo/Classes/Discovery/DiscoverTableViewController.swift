@@ -1,5 +1,5 @@
 //
-//  FJDiscoveryTableViewController.swift
+//  DiscoverTableViewController.swift
 //  FJWeibo
 //
 //  Created by Francis on 16/2/26.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DiscoveryTableViewController: BaseTableViewController {
+class DiscoverTableViewController: BaseTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

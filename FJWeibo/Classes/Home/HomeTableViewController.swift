@@ -1,5 +1,5 @@
 //
-//  FJHomeTableViewController.swift
+//  HomeTableViewController.swift
 //  FJWeibo
 //
 //  Created by Francis on 16/2/26.

@@ -1,5 +1,5 @@
 //
-//  FJProfileTableViewController.swift
+//  ProfileTableViewController.swift
 //  FJWeibo
 //
 //  Created by Francis on 16/2/26.

@@ -1,5 +1,5 @@
 //
-//  FJMainViewController.swift
+//  MainViewController.swift
 //  FJWeibo
 //
 //  Created by Francis on 16/2/26.
@@ -10,6 +10,7 @@ import UIKit
 
 class MainViewController: UITabBarController {
 
+    // MARK: - 内部控制方法
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,7 +29,7 @@ class MainViewController: UITabBarController {
         setUpComposedBtn()
     }
     
-    // MARK: - 内部控制方法
+    // MARK: - 设置加号按钮
     private func setUpComposedBtn(){
         
         //1.添加加号按钮
@@ -64,43 +65,51 @@ class MainViewController: UITabBarController {
         
         return btn
     }()
+   
     
+    // MARK: - 添加子控制器
    private func addChildViewControllers(){
     
-        
-        //        //1.获取json文件路径
-        //        let path = NSBundle.mainBundle().pathForResource("MainVCSettings.json", ofType: nil)
-        //
-        //        //2.通过文件路径创建NSData
-        //        if let jsonPath = path{
-        //            let jsonData = NSData(contentsOfFile: jsonPath)
-        //
-        //            do{
-        //                //有可能发生异常的代码
-        //                //3.序列化json数据->array
-        //                let dictArr = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers)
-        //
-        //                //4.遍历数组,动态创建控制器
-        //                for dict in dictArr as! [[String: String]]
-        //                {
-        //
-        //                    addChildViewController(dict["vcName"]!, title: dict["title"]!, imageName: dict["imageName"]!)
-        //
-        //                }
-        //
-        //            }catch{
-        //                //发生异常执行的代码
-        
-        addChildViewController("HomeTableViewController", title: "首页", imageName: "tabbar_home")
-        addChildViewController("MessageTableViewController", title: "消息", imageName: "tabbar_message_center")
-        //添加一个占位控制器
-        addChildViewController("NullViewController", title: "", imageName: "")
-        addChildViewController("DiscoveryTableViewController", title: "发现", imageName: "tabbar_discover")
-        addChildViewController("ProfileTableViewController", title: "我", imageName: "tabbar_profile")
-        //                  }
-        //            
-        //           }
+        //1.获取json文件路径
+        guard let jsonPath = NSBundle.mainBundle().pathForResource("MainVCSettings.json", ofType: nil) else{
+        print("没有获取到json数据")
+            return
+       }
+    
+        //2.通过文件路径创建NSData
 
+        guard  let jsonData = NSData(contentsOfFile: jsonPath) else{
+            return
+        }
+
+        //3.序列化json数据->array
+        guard let result = try? NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) else{
+            return
+        }
+
+         guard let dictArray = result as? [[String: AnyObject]] else{
+            return
+        }
+
+        //4.遍历数组,动态创建控制器
+        for dict in dictArray
+        {
+           
+            guard let vcName = dict["vcName"] as? String else{
+                continue
+            }
+            
+            guard let title = dict["title"] as? String else{
+                continue
+            }
+            
+            guard let imageName = dict["imageName"] as? String else{
+                continue
+            }
+            
+            addChildViewController(vcName, title:title, imageName: imageName)
+
+        }
     }
     /**
      初始化子控制器
@@ -110,21 +119,25 @@ class MainViewController: UITabBarController {
      - parameter imageName: 子控制器他图片名称
      */
     private func addChildViewController(childControllerName:String,title:String,imageName:String) {
-        
-        //print(childVC)  //<FJWeibo.FJHomeTableViewController: 0x7f9a634313d0>
 
         //0.动态获取命名空间
-        let nameStr = NSBundle.mainBundle().infoDictionary!["CFBundleExecutable"] as! String
+        guard let nameStr = NSBundle.mainBundle().infoDictionary!["CFBundleExecutable"] as? String else{
+            print("没有获取到命名空间")
+            return
+        }
         //1.将字符串转换为类
         //1.1默认情况下命名空间就是项目的名称,但是命名空间的名称是可以修改的
-        let cls:AnyClass? = NSClassFromString(nameStr + "." + childControllerName)
+        guard let AnyClass = NSClassFromString(nameStr + "." + childControllerName) else{
+            print("没有创建出来对应的类")
+            return
+        }
         //1.2通过类创建对象
-        //1.2.1将anyClass转换成指定类型
-        let vcClass = cls as! UIViewController.Type
+        //1.2.1将AnyClass转换成指定类型
+        guard let vcClass = AnyClass as? UIViewController.Type else{
+            return
+        }
         //1.2.2通过class创建对象
         let vc = vcClass.init()
-        
-        //print(vc)  //<FJWeibo.FJHomeTableViewController: 0x7ff872f28c70>
         
         //2.设置子控制器对应的数据
         vc.title = title
@@ -132,8 +145,7 @@ class MainViewController: UITabBarController {
         vc.tabBarItem.selectedImage = UIImage(named: imageName + "_highlighted")
         
         //3.设置导航控制器根控制器为当前控制器
-        let navC = UINavigationController()
-        navC.addChildViewController(vc)
+        let navC = UINavigationController(rootViewController: vc)
         
         addChildViewController(navC)
         

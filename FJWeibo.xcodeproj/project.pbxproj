@@ -20,7 +20,7 @@
 		1570C7CA1C8002F4000F0437 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7C91C8002F4000F0437 /* MainViewController.swift */; };
 		1570C7CC1C800320000F0437 /* HomeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7CB1C800320000F0437 /* HomeTableViewController.swift */; };
 		1570C7CE1C800382000F0437 /* MessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7CD1C800382000F0437 /* MessageTableViewController.swift */; };
-		1570C7D01C8003B6000F0437 /* DiscoveryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7CF1C8003B6000F0437 /* DiscoveryTableViewController.swift */; };
+		1570C7D01C8003B6000F0437 /* DiscoverTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7CF1C8003B6000F0437 /* DiscoverTableViewController.swift */; };
 		1570C7D61C8040B9000F0437 /* MainVCSettings.json in Resources */ = {isa = PBXBuildFile; fileRef = 1570C7D41C8040B9000F0437 /* MainVCSettings.json */; };
 		1570C7D71C8040B9000F0437 /* NullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7D51C8040B9000F0437 /* NullViewController.swift */; };
 		1570C7D91C804EB4000F0437 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7D81C804EB4000F0437 /* ProfileTableViewController.swift */; };
@@ -70,7 +70,7 @@
 		1570C7C91C8002F4000F0437 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		1570C7CB1C800320000F0437 /* HomeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewController.swift; sourceTree = "<group>"; };
 		1570C7CD1C800382000F0437 /* MessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageTableViewController.swift; sourceTree = "<group>"; };
-		1570C7CF1C8003B6000F0437 /* DiscoveryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoveryTableViewController.swift; sourceTree = "<group>"; };
+		1570C7CF1C8003B6000F0437 /* DiscoverTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewController.swift; sourceTree = "<group>"; };
 		1570C7D41C8040B9000F0437 /* MainVCSettings.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = MainVCSettings.json; sourceTree = "<group>"; };
 		1570C7D51C8040B9000F0437 /* NullViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullViewController.swift; sourceTree = "<group>"; };
 		1570C7D81C804EB4000F0437 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 		1570C7C31C80024F000F0437 /* Discovery */ = {
 			isa = PBXGroup;
 			children = (
-				1570C7CF1C8003B6000F0437 /* DiscoveryTableViewController.swift */,
+				1570C7CF1C8003B6000F0437 /* DiscoverTableViewController.swift */,
 			);
 			path = Discovery;
 			sourceTree = "<group>";
@@ -401,7 +401,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1570C7DB1C807980000F0437 /* BaseTableViewController.swift in Sources */,
-				1570C7D01C8003B6000F0437 /* DiscoveryTableViewController.swift in Sources */,
+				1570C7D01C8003B6000F0437 /* DiscoverTableViewController.swift in Sources */,
 				15EE82DD1C853575004C1984 /* PopoverViewController.swift in Sources */,
 				1532DF5A1C900A4200170377 /* QRCodeViewController.swift in Sources */,
 				1570C7D91C804EB4000F0437 /* ProfileTableViewController.swift in Sources */,

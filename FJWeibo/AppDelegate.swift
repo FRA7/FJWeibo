@@ -58,4 +58,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 }
-
+//MARK: - 自定义Log
+func FJLog<T>(message : T, file : String = __FILE__, lineNum : Int = __LINE__) {
+    
+    #if DEBUG
+        
+        let filePath = (file as NSString).lastPathComponent
+        print("\(filePath)-[\(lineNum)]:\(message)")
+        
+    #endif
+}

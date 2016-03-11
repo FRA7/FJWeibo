@@ -10,7 +10,7 @@ import UIKit
 
 class BaseTableViewController: UITableViewController,VisitorViewDelegate {  //遵循代理协议
     //定义一个变量保存用户是否登陆
-    var userLogin = true
+    var userLogin = false
     //定义属性保存未登录界面
     var visitorView:VisitorView?
     
@@ -44,7 +44,11 @@ class BaseTableViewController: UITableViewController,VisitorViewDelegate {  //�
     }
     
     func loginBtnWillClick(){
-        print(__FUNCTION__)
+//        print(__FUNCTION__)
+        
+        let view = QAuthViewController()
+        let nav = UINavigationController(rootViewController: view)
+        presentViewController(nav, animated: true, completion: nil)
     }
     
 

@@ -27,6 +27,8 @@
 		1570C7DB1C807980000F0437 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7DA1C807980000F0437 /* BaseTableViewController.swift */; };
 		1589C1661C80838D00C27D73 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589C1651C80838D00C27D73 /* VisitorView.swift */; };
 		1589C16A1C808AEA00C27D73 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589C1691C808AEA00C27D73 /* UIView+AutoLayout.swift */; };
+		15AE87D11C92FF3500378967 /* QAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AE87D01C92FF3500378967 /* QAuthViewController.swift */; };
+		15AE87D31C9300EB00378967 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AE87D21C9300EB00378967 /* Common.swift */; };
 		15EE82DD1C853575004C1984 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EE82DC1C853575004C1984 /* PopoverViewController.swift */; };
 		15EE82DF1C8535B3004C1984 /* PopoverViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15EE82DE1C8535B3004C1984 /* PopoverViewController.storyboard */; };
 		15EE82E11C8539DE004C1984 /* PopoverPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EE82E01C8539DE004C1984 /* PopoverPresentationController.swift */; };
@@ -77,6 +79,8 @@
 		1570C7DA1C807980000F0437 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		1589C1651C80838D00C27D73 /* VisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		1589C1691C808AEA00C27D73 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		15AE87D01C92FF3500378967 /* QAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAuthViewController.swift; sourceTree = "<group>"; };
+		15AE87D21C9300EB00378967 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		15EE82DC1C853575004C1984 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		15EE82DE1C8535B3004C1984 /* PopoverViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PopoverViewController.storyboard; sourceTree = "<group>"; };
 		15EE82E01C8539DE004C1984 /* PopoverPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverPresentationController.swift; sourceTree = "<group>"; };
@@ -171,6 +175,7 @@
 		1570C7C11C80024F000F0437 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				15AE87CF1C92FF1F00378967 /* QAuth */,
 				1570C7C51C80024F000F0437 /* Main */,
 				1570C7C41C80024F000F0437 /* Home */,
 				1570C7C71C80024F000F0437 /* Message */,
@@ -187,6 +192,7 @@
 			children = (
 				150ABD4C1C848A5F00855E09 /* UITabBarButtonItem+Category.swift */,
 				150ABD4E1C84930800855E09 /* TitleButton.swift */,
+				15AE87D21C9300EB00378967 /* Common.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -251,6 +257,14 @@
 				1570C7D51C8040B9000F0437 /* NullViewController.swift */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		15AE87CF1C92FF1F00378967 /* QAuth */ = {
+			isa = PBXGroup;
+			children = (
+				15AE87D01C92FF3500378967 /* QAuthViewController.swift */,
+			);
+			path = QAuth;
 			sourceTree = "<group>";
 		};
 		15EE82DB1C853548004C1984 /* Popover */ = {
@@ -408,6 +422,7 @@
 				1570C7CE1C800382000F0437 /* MessageTableViewController.swift in Sources */,
 				1570C7CA1C8002F4000F0437 /* MainViewController.swift in Sources */,
 				15EE82E51C8580A6004C1984 /* PopoverAnimator.swift in Sources */,
+				15AE87D31C9300EB00378967 /* Common.swift in Sources */,
 				1570C7961C7FFB3E000F0437 /* ViewController.swift in Sources */,
 				1570C7CC1C800320000F0437 /* HomeTableViewController.swift in Sources */,
 				1589C1661C80838D00C27D73 /* VisitorView.swift in Sources */,
@@ -415,6 +430,7 @@
 				150F43AD1C91B64300797F24 /* QRCodeCardViewController.swift in Sources */,
 				1589C16A1C808AEA00C27D73 /* UIView+AutoLayout.swift in Sources */,
 				15EE82E11C8539DE004C1984 /* PopoverPresentationController.swift in Sources */,
+				15AE87D11C92FF3500378967 /* QAuthViewController.swift in Sources */,
 				150ABD4D1C848A5F00855E09 /* UITabBarButtonItem+Category.swift in Sources */,
 				150ABD4F1C84930800855E09 /* TitleButton.swift in Sources */,
 				1570C7941C7FFB3E000F0437 /* AppDelegate.swift in Sources */,

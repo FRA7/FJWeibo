@@ -14,6 +14,7 @@
 
 
 import UIKit
+import SVProgressHUD
 
 
 class QAuthViewController: UIViewController {
@@ -79,6 +80,7 @@ extension QAuthViewController:UIWebViewDelegate{
             //2.2截取字符串
             let code = urlStr.substringFromIndex(range.endIndex)
             FJLog(code)
+            loadAccessTaken(code)
         }
         
         //3.关闭页面
@@ -89,11 +91,27 @@ extension QAuthViewController:UIWebViewDelegate{
 ///每次请求前调用
     func webViewDidStartLoad(webView: UIWebView) {
         FJLog("正在加载")
-        
+
+        SVProgressHUD.showInfoWithStatus("正在加载", maskType: .Black)
     }
     ///每次请求完成调用
     func webViewDidFinishLoad(webView: UIWebView) {
         
+        SVProgressHUD.dismiss()
+    }
+    
+    //通过request token换取access token
+    private func loadAccessTaken(code:String){
         
+        let url = "oauth2/access_token"
+        let parameter = ["client_id":FJ_App_Key,"client_secret":FJ_App_Secret,"grant_type":"authorization_code","code":code,"redirect_uri":FJ_Redirect_uri]
+        
+        //发送请求
+        NetWorkTool.shareInstance.POST(url, parameters: parameter, success: { (task:NSURLSessionDataTask, objc: AnyObject?) -> Void in
+            
+            FJLog(objc)
+            }) { (task:NSURLSessionDataTask?, error:NSError) -> Void in
+                FJLog(error)
+        }
     }
 }

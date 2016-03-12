@@ -27,13 +27,14 @@
 		1570C7DB1C807980000F0437 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7DA1C807980000F0437 /* BaseTableViewController.swift */; };
 		1589C1661C80838D00C27D73 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589C1651C80838D00C27D73 /* VisitorView.swift */; };
 		1589C16A1C808AEA00C27D73 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589C1691C808AEA00C27D73 /* UIView+AutoLayout.swift */; };
+		158EC87D1C93B50C0037D0AE /* NetWorkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EC87C1C93B50C0037D0AE /* NetWorkTool.swift */; };
 		15AE87D11C92FF3500378967 /* QAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AE87D01C92FF3500378967 /* QAuthViewController.swift */; };
 		15AE87D31C9300EB00378967 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AE87D21C9300EB00378967 /* Common.swift */; };
 		15EE82DD1C853575004C1984 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EE82DC1C853575004C1984 /* PopoverViewController.swift */; };
 		15EE82DF1C8535B3004C1984 /* PopoverViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15EE82DE1C8535B3004C1984 /* PopoverViewController.storyboard */; };
 		15EE82E11C8539DE004C1984 /* PopoverPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EE82E01C8539DE004C1984 /* PopoverPresentationController.swift */; };
 		15EE82E51C8580A6004C1984 /* PopoverAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EE82E41C8580A6004C1984 /* PopoverAnimator.swift */; };
-		F8083EBA2D1E1B2A4F1159E0 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EBF23BFD0C7B3D467AC71AF9 /* libPods.a */; };
+		E3ECBFF723C75292CFDC3217 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1305C54216A0978703547E94 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1305C54216A0978703547E94 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		150ABD4C1C848A5F00855E09 /* UITabBarButtonItem+Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITabBarButtonItem+Category.swift"; sourceTree = "<group>"; };
 		150ABD4E1C84930800855E09 /* TitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleButton.swift; sourceTree = "<group>"; };
 		150F43AC1C91B64300797F24 /* QRCodeCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeCardViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +82,7 @@
 		1570C7DA1C807980000F0437 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		1589C1651C80838D00C27D73 /* VisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		1589C1691C808AEA00C27D73 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
+		158EC87C1C93B50C0037D0AE /* NetWorkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkTool.swift; sourceTree = "<group>"; };
 		15AE87D01C92FF3500378967 /* QAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAuthViewController.swift; sourceTree = "<group>"; };
 		15AE87D21C9300EB00378967 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		15EE82DC1C853575004C1984 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
@@ -87,7 +90,6 @@
 		15EE82E01C8539DE004C1984 /* PopoverPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverPresentationController.swift; sourceTree = "<group>"; };
 		15EE82E41C8580A6004C1984 /* PopoverAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverAnimator.swift; sourceTree = "<group>"; };
 		E870579D2A0D5A325D0F8BF5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		EBF23BFD0C7B3D467AC71AF9 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		EEF924E874AD25910B6A97F4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -96,7 +98,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F8083EBA2D1E1B2A4F1159E0 /* libPods.a in Frameworks */,
+				E3ECBFF723C75292CFDC3217 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,6 +202,7 @@
 				150ABD4C1C848A5F00855E09 /* UITabBarButtonItem+Category.swift */,
 				150ABD4E1C84930800855E09 /* TitleButton.swift */,
 				15AE87D21C9300EB00378967 /* Common.swift */,
+				158EC87C1C93B50C0037D0AE /* NetWorkTool.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -297,7 +300,7 @@
 		FF4EA14AECCAEAE742C731E8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EBF23BFD0C7B3D467AC71AF9 /* libPods.a */,
+				1305C54216A0978703547E94 /* Pods.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 				15EE82E11C8539DE004C1984 /* PopoverPresentationController.swift in Sources */,
 				15AE87D11C92FF3500378967 /* QAuthViewController.swift in Sources */,
 				150ABD4D1C848A5F00855E09 /* UITabBarButtonItem+Category.swift in Sources */,
+				158EC87D1C93B50C0037D0AE /* NetWorkTool.swift in Sources */,
 				150ABD4F1C84930800855E09 /* TitleButton.swift in Sources */,
 				1570C7941C7FFB3E000F0437 /* AppDelegate.swift in Sources */,
 			);
@@ -635,7 +639,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
-				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG";
+				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG -D COCOAPODS";
 				PRODUCT_BUNDLE_IDENTIFIER = fraj7.com.FJWeibo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

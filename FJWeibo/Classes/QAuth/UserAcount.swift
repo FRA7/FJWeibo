@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UserAccount: NSObject{
+class UserAccount: NSObject, NSCoding{
     /// 用于调用access_token，接口获取授权后的access token。
     var access_token: String?
     /// access_token的生命周期，单位是秒数。
@@ -41,7 +41,7 @@ class UserAccount: NSObject{
         
     }
     /// 从文件中读取一个模型时调用
-    required init?(coder aDecoder:NSCoder){
+    required init?(coder aDecoder: NSCoder){
         access_token = aDecoder.decodeObjectForKey("access_token") as? String
         expires_in = aDecoder.decodeObjectForKey("expires_in") as! Double
         uid = aDecoder.decodeObjectForKey("uid") as? String
@@ -51,7 +51,7 @@ class UserAccount: NSObject{
         
     }
     /// 将对象写入文件时调用
-    func encodeWithCoder(aCoder : NSCoder){
+    func encodeWithCoder(aCoder: NSCoder){
         aCoder.encodeObject(access_token, forKey: "access_token")
         aCoder.encodeObject(expires_in, forKey: "expires_in")
         aCoder.encodeObject(uid, forKey: "uid")
@@ -62,7 +62,7 @@ class UserAccount: NSObject{
     
     ///打印对象
     override var description:String{
-        let keys = ["access_token","expires_in","uid","expires_date","screen_name","avatar_large"]
+        let keys = ["access_token", "expires_in", "uid", "expires_date", "screen_name", "avatar_large"]
         let dict = dictionaryWithValuesForKeys(keys)
         FJLog(dict)
         return "\(dict)"
@@ -88,9 +88,9 @@ class UserAccount: NSObject{
             return nil
         }
         
+        FJLog(account)
         return account
     }
-    
     
     ///判断用户是否登陆
     class func userLogon() -> Bool{

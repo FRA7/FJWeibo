@@ -76,26 +76,26 @@ class UserAccount: NSObject, NSCoding{
         return NSKeyedArchiver.archiveRootObject(self, toFile: UserAccount.filePath)
     }
     
-    ///读取写入的对象
-    class func loadUserAccount() ->UserAccount?{
-
-        //1.读取对象
-        let account = NSKeyedUnarchiver.unarchiveObjectWithFile(UserAccount.filePath) as? UserAccount
-        //2.判断对象是否过期
-        if account?.expires_date?.compare(NSDate()) == NSComparisonResult.OrderedAscending{
-            FJLog(account!.expires_date!)
-            FJLog("登陆过期了")
-            return nil
-        }
-        
-        FJLog(account)
-        return account
-    }
-    
-    ///判断用户是否登陆
-    class func userLogon() -> Bool{
-    
-        return loadUserAccount() != nil
-    }
+//    ///读取写入的对象
+//    class func loadUserAccount() ->UserAccount?{
+//
+//        //1.读取对象
+//        let account = NSKeyedUnarchiver.unarchiveObjectWithFile(UserAccount.filePath) as? UserAccount
+//        //2.判断对象是否过期
+//        if account?.expires_date?.compare(NSDate()) == NSComparisonResult.OrderedAscending{
+//            FJLog(account!.expires_date!)
+//            FJLog("登陆过期了")
+//            return nil
+//        }
+//        
+//        FJLog(account)
+//        return account
+//    }
+//    
+//    ///判断用户是否登陆
+//    class func userLogon() -> Bool{
+//    
+//        return loadUserAccount() != nil
+//    }
     
 }

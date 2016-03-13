@@ -53,7 +53,7 @@ class HomeTableViewController: BaseTableViewController {
         
         //2.初始化标题按钮
         let titleBtn = TitleButton()
-        let name = UserAccount.loadUserAccount()?.screen_name
+        let name = UserAccountViewModel.shareInstance.screen_name
         FJLog("name = \(name)")
         titleBtn.setTitle(name, forState: UIControlState.Normal)
         titleBtn.addTarget(self, action: "titleButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
@@ -63,9 +63,7 @@ class HomeTableViewController: BaseTableViewController {
     
     func titleButtonClick(btn:TitleButton){
 
-        //1.设置按钮状态
-//        btn.selected = !btn.selected
-        //2.弹出菜单
+        //1.弹出菜单
         let sb = UIStoryboard(name: "PopoverViewController", bundle: nil)
         let vc = sb.instantiateInitialViewController()
         //2.1设置转场代理

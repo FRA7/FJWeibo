@@ -27,14 +27,7 @@ class QAuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-//        let (data, enc) = UTF8ToGB2312("abcd1234")
-//        let gbkStr = NSString(data: data!, encoding: enc)!
-//        
-//        print("GBK string is: \(gbkStr)")
-        
-        
-        
+      
         
         //左侧导航条按钮
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("closeBtnClick"))
@@ -108,65 +101,26 @@ extension QAuthViewController:UIWebViewDelegate{
         SVProgressHUD.dismiss()
     }
     
-    //通过request token换取access token
-    private func loadAccessTaken(code:String){
+    /**
+     通过request token换取access token授权
+     */
+    private func loadAccessTaken(code: String){
         
-//        let url = "oauth2/access_token"
-//        let parameter = ["client_id":FJ_App_Key,"client_secret":FJ_App_Secret,"grant_type":"authorization_code","code":code,"redirect_uri":FJ_Redirect_uri]
-//        
-//        //发送请求
-//        NetWorkTool.shareInstance.POST(url, parameters: parameter, success: { (task:NSURLSessionDataTask, objc: AnyObject?) -> Void in
-//            
-//            let account = UserAccount(dict: objc as! [String : AnyObject])
-//            account.saveUserAccount()
-//            
-//            FJLog(objc)
-//            }) { (task:NSURLSessionDataTask?, error:NSError) -> Void in
-//                FJLog(error)
-//        }
         
-        NetWorkTool.shareInstance.loadAccessToken(code) { (account, error) -> () in
-            if error != nil || account == nil{
-                SVProgressHUD.showErrorWithStatus("获取用户信息失败" ,maskType: .Black)
-                return
-            }
-            
-//            let s = (NSString)account?.screen_name
-            
-            FJLog(account)
-            
-//                    let (data, enc) = self.UTF8ToGB2312((account?.screen_name)!)
-//                    let gbkStr = NSString(data: data!, encoding: enc)!
-//            
-//                    print("GBK string is: \(gbkStr)")
-            
-            
-            
-            //授权成功
-            self.loadUserInfo(account!)
-        }
+        UserAccountViewModel.shareInstance.loadAccessToken(code,finished: { (account, error) -> () in
+           
+            UserAccountViewModel.shareInstance.loadUserInfo(account!,finished: { (account, error) -> () in
+                if error != nil || account == nil{
+                    SVProgressHUD.showErrorWithStatus("获取用户信息失败" ,maskType: .Black)
+                    return
+                }
+                
+                //保存用户授权信息
+                account!.saveUserAccount()
+                
+            })
+        })
     }
-    //MARK: - UTF8转码
-    func UTF8ToGB2312(str: String) -> (NSData?, UInt) {
-        let enc = CFStringConvertEncodingToNSStringEncoding(UInt32(CFStringEncodings.GB_18030_2000.rawValue))
-        
-        var data = str.dataUsingEncoding(enc, allowLossyConversion: false)
-        
-        return (data, enc)
-    }
-    
-    private func loadUserInfo(account: UserAccount){
-        
-        NetWorkTool.shareInstance.loadUserInfo(account) { (account, error) -> () in
-            if error != nil || account == nil{
-                SVProgressHUD.showErrorWithStatus("获取用户信息失败" ,maskType: .Black)
-                return
-            }
-            
-            //保存用户授权信息
-            account!.saveUserAccount()
-            
-        }
-        
-    }
+
+
 }

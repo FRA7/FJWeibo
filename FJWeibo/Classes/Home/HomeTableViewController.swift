@@ -53,7 +53,9 @@ class HomeTableViewController: BaseTableViewController {
         
         //2.初始化标题按钮
         let titleBtn = TitleButton()
-        titleBtn.setTitle("FRAJ ", forState: UIControlState.Normal)
+        let name = UserAccount.loadUserAccount()?.screen_name
+        FJLog("name = \(name)")
+        titleBtn.setTitle(name, forState: UIControlState.Normal)
         titleBtn.addTarget(self, action: "titleButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
         navigationItem.titleView = titleBtn
         

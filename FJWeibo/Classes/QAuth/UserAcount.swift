@@ -24,6 +24,11 @@ class UserAccount: NSObject{
     /// 当前授权用户的UID。
     var uid: String?
     
+    ///用户昵称
+    var screen_name: String?
+    ///用户头像URL字符串
+    var avatar_large: String?
+    
     static var filePath = "account.plist".cacheDir()
    
     //MARK: - 生命周期方法
@@ -41,7 +46,9 @@ class UserAccount: NSObject{
         expires_in = aDecoder.decodeObjectForKey("expires_in") as! Double
         uid = aDecoder.decodeObjectForKey("uid") as? String
         expires_date = aDecoder.decodeObjectForKey("expires_date") as? NSDate
-     
+        screen_name = aDecoder.decodeObjectForKey("screen_name") as? String
+        avatar_large = aDecoder.decodeObjectForKey("avatar_large") as? String
+        
     }
     /// 将对象写入文件时调用
     func encodeWithCoder(aCoder : NSCoder){
@@ -49,35 +56,32 @@ class UserAccount: NSObject{
         aCoder.encodeObject(expires_in, forKey: "expires_in")
         aCoder.encodeObject(uid, forKey: "uid")
         aCoder.encodeObject(expires_date, forKey: "expires_date")
+        aCoder.encodeObject(screen_name, forKey: "screen_name")
+        aCoder.encodeObject(avatar_large, forKey: "avatar_large")
     }
     
     ///打印对象
     override var description:String{
-        let keys = ["access_token","expires_in","uid"]
+        let keys = ["access_token","expires_in","uid","expires_date","screen_name","avatar_large"]
         let dict = dictionaryWithValuesForKeys(keys)
+        FJLog(dict)
         return "\(dict)"
     }
     
     //MARK: - 内部控制方法
     ///写入对象
     func saveUserAccount() -> Bool{
-//        //1.获取系统路径
-//        let path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).last!
-//        //2.拼接路径
-//        let filePath = (path as NSString).stringByAppendingPathComponent("account.plist")
-        //3.写入对象
+
+        //1.写入对象
         return NSKeyedArchiver.archiveRootObject(self, toFile: UserAccount.filePath)
     }
     
     ///读取写入的对象
     class func loadUserAccount() ->UserAccount?{
-//        //1.获取系统路径
-//        let path = NSSearchPathForDirectoriesInDomains(.CachesDirectory, .UserDomainMask, true).last!
-//        //2.拼接路径
-//        let filePath = (path as NSString).stringByAppendingPathComponent("account.plist")
-        //3.读取对象
+
+        //1.读取对象
         let account = NSKeyedUnarchiver.unarchiveObjectWithFile(UserAccount.filePath) as? UserAccount
-        //4.判断对象是否过期
+        //2.判断对象是否过期
         if account?.expires_date?.compare(NSDate()) == NSComparisonResult.OrderedAscending{
             FJLog(account!.expires_date!)
             FJLog("登陆过期了")

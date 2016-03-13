@@ -46,7 +46,7 @@ class MainViewController: UITabBarController {
     
     func composedBtnClick(){
 
-        print(__FUNCTION__)
+        FJLog(__FUNCTION__)
     }
     
     //MARK: - 懒加载

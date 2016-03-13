@@ -67,6 +67,7 @@ class HomeTableViewController: BaseTableViewController {
         let sb = UIStoryboard(name: "PopoverViewController", bundle: nil)
         let vc = sb.instantiateInitialViewController()
         //2.1设置转场代理
+        popoverAnimator.presentFrame = CGRect(x: (UIScreen.mainScreen().bounds.width - 200)*0.5, y: 56, width: 200, height: 300)
         vc?.transitioningDelegate = popoverAnimator
         //2.2设置转场样式
         vc?.modalPresentationStyle = UIModalPresentationStyle.Custom
@@ -77,11 +78,11 @@ class HomeTableViewController: BaseTableViewController {
     }
     
      func leftItemClick(){
-        print(__FUNCTION__)
+        FJLog(__FUNCTION__)
        
     }
      func rightItemClick(){
-//        print(__FUNCTION__)
+
         
         let sb = UIStoryboard(name: "QRCodeViewController", bundle: nil)
         let vc = sb.instantiateInitialViewController()

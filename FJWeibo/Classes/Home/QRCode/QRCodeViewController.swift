@@ -308,10 +308,10 @@ extension QRCodeViewController: UITabBarDelegate{
     func tabBar(tabBar: UITabBar, didSelectItem item: UITabBarItem){
         //1.修改扫描视图高度
         if item.tag == 0{
-            print("二维码")
+            FJLog("二维码")
             self.containerHeightCons.constant = 300
         }else{
-            print("条形码")
+            FJLog("条形码")
             self.containerHeightCons.constant = 150
         }
         

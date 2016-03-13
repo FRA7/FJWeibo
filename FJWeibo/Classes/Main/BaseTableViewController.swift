@@ -48,7 +48,7 @@ class BaseTableViewController: UITableViewController,VisitorViewDelegate {  //ÈÅ
     }
     
     func loginBtnWillClick(){
-//        print(__FUNCTION__)
+
         
         let view = QAuthViewController()
         let nav = UINavigationController(rootViewController: view)

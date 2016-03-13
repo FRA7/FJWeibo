@@ -109,6 +109,9 @@ extension QAuthViewController:UIWebViewDelegate{
         //发送请求
         NetWorkTool.shareInstance.POST(url, parameters: parameter, success: { (task:NSURLSessionDataTask, objc: AnyObject?) -> Void in
             
+            let account = UserAccount(dict: objc as! [String : AnyObject])
+            account.saveUserAccount()
+            
             FJLog(objc)
             }) { (task:NSURLSessionDataTask?, error:NSError) -> Void in
                 FJLog(error)

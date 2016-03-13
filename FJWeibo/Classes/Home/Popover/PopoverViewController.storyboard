@@ -22,10 +22,11 @@
                             </imageView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="cjf-IK-oGi">
                                 <rect key="frame" x="20" y="20" width="560" height="560"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="separatorColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cjf-IK-oGi" firstAttribute="leading" secondItem="jGy-1C-WC9" secondAttribute="leading" constant="20" id="Brn-LY-dZu"/>
                             <constraint firstItem="pUq-OB-UGD" firstAttribute="top" secondItem="cjf-IK-oGi" secondAttribute="bottom" constant="20" id="Ipw-Ss-pcP"/>

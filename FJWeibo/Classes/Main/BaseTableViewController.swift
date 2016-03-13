@@ -10,7 +10,8 @@ import UIKit
 
 class BaseTableViewController: UITableViewController,VisitorViewDelegate {  //遵循代理协议
     //定义一个变量保存用户是否登陆
-    var userLogin = false
+    var userLogin = UserAccount.userLogon()
+    
     //定义属性保存未登录界面
     var visitorView:VisitorView?
     
@@ -18,6 +19,8 @@ class BaseTableViewController: UITableViewController,VisitorViewDelegate {  //�
     
     override func loadView() {
         userLogin ? super.loadView() :setUpVisterView()
+        
+        FJLog(userLogin)
     }
     
     
@@ -40,7 +43,8 @@ class BaseTableViewController: UITableViewController,VisitorViewDelegate {  //�
     }
     
     func registerBtnWillClick(){
-        print(__FUNCTION__)
+        
+        FJLog(__FUNCTION__)
     }
     
     func loginBtnWillClick(){

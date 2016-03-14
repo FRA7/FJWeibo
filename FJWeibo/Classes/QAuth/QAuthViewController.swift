@@ -58,6 +58,7 @@ class QAuthViewController: UIViewController {
     }
 }
 
+//MARK: - WebView代理方法
 extension QAuthViewController:UIWebViewDelegate{
     //判断是否允许继续访问
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
@@ -100,6 +101,10 @@ extension QAuthViewController:UIWebViewDelegate{
         
         SVProgressHUD.dismiss()
     }
+}
+
+//MARK: - 通过请求获取accessToken授权
+extension QAuthViewController{
     
     /**
      通过request token换取access token授权
@@ -108,7 +113,7 @@ extension QAuthViewController:UIWebViewDelegate{
         
         
         UserAccountViewModel.shareInstance.loadAccessToken(code,finished: { (account, error) -> () in
-           
+            
             UserAccountViewModel.shareInstance.loadUserInfo(account!,finished: { (account, error) -> () in
                 if error != nil || account == nil{
                     SVProgressHUD.showErrorWithStatus("获取用户信息失败" ,maskType: .Black)
@@ -121,6 +126,4 @@ extension QAuthViewController:UIWebViewDelegate{
             })
         })
     }
-
-
 }

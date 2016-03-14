@@ -37,9 +37,12 @@ class UserAccount: NSObject, NSCoding{
         super.init()
         setValuesForKeysWithDictionary(dict)
     }
+    
+    //重写不用属性的方法,防止应用崩溃
     override func setValue(value: AnyObject?, forUndefinedKey key: String) {
         
     }
+    
     /// 从文件中读取一个模型时调用
     required init?(coder aDecoder: NSCoder){
         access_token = aDecoder.decodeObjectForKey("access_token") as? String
@@ -75,27 +78,5 @@ class UserAccount: NSObject, NSCoding{
         //1.写入对象
         return NSKeyedArchiver.archiveRootObject(self, toFile: UserAccount.filePath)
     }
-    
-//    ///读取写入的对象
-//    class func loadUserAccount() ->UserAccount?{
-//
-//        //1.读取对象
-//        let account = NSKeyedUnarchiver.unarchiveObjectWithFile(UserAccount.filePath) as? UserAccount
-//        //2.判断对象是否过期
-//        if account?.expires_date?.compare(NSDate()) == NSComparisonResult.OrderedAscending{
-//            FJLog(account!.expires_date!)
-//            FJLog("登陆过期了")
-//            return nil
-//        }
-//        
-//        FJLog(account)
-//        return account
-//    }
-//    
-//    ///判断用户是否登陆
-//    class func userLogon() -> Bool{
-//    
-//        return loadUserAccount() != nil
-//    }
     
 }

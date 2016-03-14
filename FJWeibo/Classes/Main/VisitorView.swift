@@ -57,9 +57,9 @@ class VisitorView: UIView {
         
         //1.添加子控件
         addSubview(iconView)
+        addSubview(maskBGView)
         addSubview(homeIcon)
         addSubview(messageLabel)
-        addSubview(maskBGView)
         addSubview(loginButton)
         addSubview(registButton)
         //2.布局子控件
@@ -119,6 +119,13 @@ class VisitorView: UIView {
        let iv = UIImageView(image: UIImage(named: "visitordiscover_feed_image_house"))
         return iv
     }()
+    
+    //遮盖view
+    private lazy var maskBGView:UIImageView = {
+        let iv = UIImageView(image: UIImage(named: "visitordiscover_feed_mask_smallicon"))
+        return iv
+    }()
+    
     //文本
     private lazy var messageLabel:UILabel = {
         let label = UILabel()
@@ -152,11 +159,5 @@ class VisitorView: UIView {
         btn.addTarget(self, action: "registerBtnClick", forControlEvents: UIControlEvents.TouchUpInside)
         return btn
     }()
-    //遮盖view
-    private lazy var maskBGView:UIImageView = {
-        let iv = UIImageView(image: UIImage(named: "visitordiscover_feed_mask_smallicon"))
-        return iv
-    }()
-
 
 }

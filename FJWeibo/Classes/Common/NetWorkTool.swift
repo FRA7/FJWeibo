@@ -22,30 +22,9 @@ class NetWorkTool: AFHTTPSessionManager {
     
 }
 
-//MARK: - 授权相关
+//MARK: - 获取accessToken
 extension NetWorkTool{
-    ///获取accessToken
-//    func loadAccessToken(code: String,finished:(account: UserAccount?,error: NSError?) ->()){
-//        
-//            let url = "oauth2/access_token"
-//            let parameter = ["client_id": FJ_App_Key,"client_secret": FJ_App_Secret,"grant_type": "authorization_code","code": code,"redirect_uri": FJ_Redirect_uri]
-//    
-//            //发送请求
-//            NetWorkTool.shareInstance.POST(url, parameters: parameter, success: { (task:NSURLSessionDataTask, objc: AnyObject?) -> Void in
-//    
-//                let account = UserAccount(dict: objc as! [String : AnyObject])
-////                account.saveUserAccount()
-//                
-//                finished(account: account, error: nil)
-//                FJLog(account)
-//    
-//                }) { (task:NSURLSessionDataTask?, error:NSError) -> Void in
-////                    FJLog(error)
-//                    finished(account: nil, error: error)
-//            }
-//        
-//    }
-    
+   
     func loadAccessToken(code: String, finished: (account: UserAccount?, error: NSError?)->()) {
         // 1.准备路径
         let path = "oauth2/access_token"
@@ -59,9 +38,6 @@ extension NetWorkTool{
             // 3.1字典转换模型
             let account = UserAccount(dict: objc as! [String : AnyObject])
             
-            // 3.2获取用户信息
-            //            self.loadUserInfo(account)
-            
             // 3.2通知外界是否授权成功
             finished(account: account, error: nil)
             
@@ -69,8 +45,11 @@ extension NetWorkTool{
                 finished(account: nil, error: error)
         }
     }
-
     
+}
+
+//MARK: - 请求用户信息
+extension NetWorkTool{
     
     func loadUserInfo(account: UserAccount,finished: (account: UserAccount?,error: NSError?) -> ()){
         
@@ -97,9 +76,5 @@ extension NetWorkTool{
                 
                 finished(account: nil, error: error)
         }
-        
-        
     }
-    
-    
 }

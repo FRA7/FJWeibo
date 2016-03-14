@@ -15,16 +15,12 @@ class BaseTableViewController: UITableViewController,VisitorViewDelegate {  //�
     //定义属性保存未登录界面
     var visitorView:VisitorView?
     
-    
-    
     override func loadView() {
         userLogin ? super.loadView() :setUpVisterView()
         
         FJLog(userLogin)
     }
-    
-    
-    
+        
     //MARK: - 创建未登录界面
     private func setUpVisterView(){
         
@@ -41,6 +37,10 @@ class BaseTableViewController: UITableViewController,VisitorViewDelegate {  //�
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: UIBarButtonItemStyle.Plain, target: self, action: "registerBtnWillClick")
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登陆", style: UIBarButtonItemStyle.Plain, target: self, action: "loginBtnWillClick")
     }
+  
+}
+//MARK: - 导航条按钮点击事件
+extension BaseTableViewController{
     
     func registerBtnWillClick(){
         
@@ -48,14 +48,9 @@ class BaseTableViewController: UITableViewController,VisitorViewDelegate {  //�
     }
     
     func loginBtnWillClick(){
-
         
         let view = QAuthViewController()
         let nav = UINavigationController(rootViewController: view)
         presentViewController(nav, animated: true, completion: nil)
     }
-    
-
-
-   
 }

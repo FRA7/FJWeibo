@@ -32,7 +32,7 @@ class UserAccountViewModel{
         return false
     }
     
-    
+    ///重写构造方法
     init(){
         //1.读取对象
         let account = NSKeyedUnarchiver.unarchiveObjectWithFile(UserAccount.filePath) as? UserAccount
@@ -45,6 +45,9 @@ class UserAccountViewModel{
         //3.保存数据模型
         self.account = account
     }
+   
+}
+extension UserAccountViewModel{
     
     /**
      判断用户是否登陆
@@ -72,5 +75,4 @@ class UserAccountViewModel{
     func loadUserInfo(account: UserAccount,finished: (account: UserAccount?,error: NSError?) -> ()){
         NetWorkTool.shareInstance.loadUserInfo(account, finished: finished)
     }
-    
 }

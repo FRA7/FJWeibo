@@ -32,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.backgroundColor = UIColor.whiteColor()
         //2.设置窗口根视图
-        window?.rootViewController = MainViewController()
+//        window?.rootViewController = MainViewController()
+        window?.rootViewController = WelcomeViewController()
         
         //3.显示窗口
         window?.makeKeyAndVisible()

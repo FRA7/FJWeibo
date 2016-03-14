@@ -8,13 +8,22 @@
 
 import UIKit
 
+typealias SuccessCallBack = (isSuccess: Bool) -> ()
+
 class UserAccountViewModel{
-    ///单例
+    /// 将视图模型设置到单例对象 --> 1.很多地方都会用 2.使用对象起来更多方便
     static let shareInstance: UserAccountViewModel = UserAccountViewModel()
     
-    ///授权模型
+    /// 用户账号的属性 --> UserAccountViewModel初衷就是对象account
     var account: UserAccount?
-        
+    
+    /// 用户判断是否登录成功的属性 --> 快速判断是否登录
+    var isLogin: Bool{
+        return account != nil && !isExpires
+    }
+    
+    
+    
     var screen_name: String?{
         return account?.screen_name
     }
@@ -23,48 +32,59 @@ class UserAccountViewModel{
         return account?.access_token
     }
     
-    ///记录授权模型是否过期
+    
+    
+    /// 判断AccessToken是否过期 --> 快速判断是否过期
     var isExpires: Bool{
-        if account?.expires_date?.compare(NSDate()) == NSComparisonResult.OrderedAscending{
-            
+        
+        guard let expires_date = account?.expires_date else{
             return true
         }
-        return false
+        
+        return expires_date.compare(NSDate()) == NSComparisonResult.OrderedAscending
     }
     
-    ///重写构造方法
+
+    
+    // MARK:- 构造函数 : 创建出来ViewModel对象之后,拥有account
     init(){
         //1.读取对象
-        let account = NSKeyedUnarchiver.unarchiveObjectWithFile(UserAccount.filePath) as? UserAccount
-        
-        //2.判断是否过期
-        if isExpires{
-            return
-        }
-        
-        //3.保存数据模型
-        self.account = account
+        account = NSKeyedUnarchiver.unarchiveObjectWithFile(UserAccount.filePath) as? UserAccount
+
     }
    
 }
 extension UserAccountViewModel{
-    
-    /**
-     判断用户是否登陆
-     */
-    func userLogon() -> Bool{
-        
-        return account != nil
-    }
-    
-    
+       
     /**
      利用RequestToken换取AccessToken
      
      - parameter code: RequestToken
      */
-    func loadAccessToken(code: String, finished: (account: UserAccount?, error: NSError?)->()) {
-        NetWorkTool.shareInstance.loadAccessToken(code, finished: finished)
+    func loadAccessToken(code: String, isSuccess: SuccessCallBack) {
+
+        NetWorkTool.shareInstance.loadAccessToken(code) { (result, error) -> () in
+            //1.错误校验
+            if error != nil{
+                FJLog(error)
+                isSuccess(isSuccess: false)
+                return
+            }
+
+            //2.获取结果字典
+            guard let accountDict = result else{
+                isSuccess(isSuccess: false)
+                return
+            }
+            
+            //3.字典转成模型对象
+            let account = UserAccount(dict: accountDict)
+            
+            //4.请求用户信息
+            self.loadUserInfo(account, isSuccess: isSuccess)
+            
+        }
+        
     }
     
     /**
@@ -72,7 +92,43 @@ extension UserAccountViewModel{
      
      - parameter account: 授权模型
      */
-    func loadUserInfo(account: UserAccount,finished: (account: UserAccount?,error: NSError?) -> ()){
-        NetWorkTool.shareInstance.loadUserInfo(account, finished: finished)
+    func loadUserInfo(account: UserAccount,isSuccess: SuccessCallBack){
+    
+        //1.获取accessToken和uid
+        guard let accessToken = account.access_token,uid = account.uid else{
+            isSuccess(isSuccess: false)
+            return
+        }
+        
+        //2.请求用户信息
+        NetWorkTool.shareInstance.loadUserInfo(accessToken, uid: uid) { (result, error) -> () in
+            //1.错误校验
+            if error != nil{
+                FJLog(error)
+                isSuccess(isSuccess: false)
+                return
+            }
+            
+            //2.获取字典结果
+            guard let userInfoDict = result else{
+                isSuccess(isSuccess: false)
+                return
+            }
+            
+            //3.从字典中获取头像的地址和昵称
+            account.avatar_large = userInfoDict["avatar_large"] as? String
+            account.screen_name = userInfoDict["screen_name"] as? String
+            
+            //4.将账号的对象进行归档
+            FJLog(UserAccount.filePath)
+            NSKeyedArchiver.archiveRootObject(account, toFile: UserAccount.filePath)
+            
+            //5.将创建出的账号对象,赋值给account属性
+            self.account = account
+            
+            //6.回调成功
+            isSuccess(isSuccess: true)
+            
+        }
     }
 }

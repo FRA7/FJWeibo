@@ -9,72 +9,85 @@
 import UIKit
 import AFNetworking
 
+enum MethodType : String {
+    case GET = "GET"
+    case POST = "POST"
+}
+
 class NetWorkTool: AFHTTPSessionManager {
 
-    static let shareInstance: NetWorkTool = {
-    let baseUrl = NSURL(string: "https://api.weibo.com/")
-    let instance = NetWorkTool(baseURL: baseUrl, sessionConfiguration: NSURLSessionConfiguration.defaultSessionConfiguration())
     
-        instance.responseSerializer.acceptableContentTypes = NSSet(objects: "application/json", "text/json", "text/javascript", "text/plain") as? Set<String>
+    // 给闭包起别名
+    typealias Finished = (result : [String : AnyObject]?, error : NSError?) -> ()
+    
+    static let shareInstance: NetWorkTool = {
+
+    let instance = NetWorkTool()
+    
+        instance.responseSerializer.acceptableContentTypes?.insert("text/plain")
 
     return instance
     }()
     
 }
 
-//MARK: - 获取accessToken
+// MARK:- 封装网络请求
+extension NetWorkTool{
+    
+    func request(methodType : MethodType,urlString: String,parameters: [String: AnyObject],finished: (result: AnyObject?,error: NSError?) -> ()){
+        
+        //1.定义成功的回调
+        let successCallback = { (task : NSURLSessionDataTask, result : AnyObject?) -> Void in
+            finished(result: result, error: nil)
+        }
+        
+        //2.定义失败的回调
+        let failureCallback = { (task: NSURLSessionDataTask?, error: NSError) -> Void in
+            finished(result: nil, error: error)
+        }
+        
+        //3.根据请求的方式发送请求
+        if methodType == .GET{
+            GET(urlString, parameters: parameters, progress: nil, success: successCallback,failure: failureCallback)
+        }else{
+            POST(urlString, parameters: parameters, progress: nil, success: successCallback,failure:failureCallback)
+        }
+        
+    }
+}
+
+
+//MARK: - 请求accessToken
 extension NetWorkTool{
    
-    func loadAccessToken(code: String, finished: (account: UserAccount?, error: NSError?)->()) {
+    func loadAccessToken(code: String, finished: Finished) {
         // 1.准备路径
-        let path = "oauth2/access_token"
+        let urlString = "https://api.weibo.com/oauth2/access_token"
         
         // 2.准备参数
         let parameters = ["client_id": FJ_App_Key, "client_secret": FJ_App_Secret, "grant_type": "authorization_code", "code": code, "redirect_uri": FJ_Redirect_uri]
         
         // 3.发送请求
-        NetWorkTool.shareInstance.POST(path, parameters: parameters, success: { (task, objc) -> Void in
-            
-            // 3.1字典转换模型
-            let account = UserAccount(dict: objc as! [String : AnyObject])
-            
-            // 3.2通知外界是否授权成功
-            finished(account: account, error: nil)
-            
-            }) { (task, error) -> Void in
-                finished(account: nil, error: error)
+        request(.POST, urlString: urlString, parameters: parameters) { (result, error) -> () in
+            finished(result: result as? [String : AnyObject], error: error)
         }
     }
-    
 }
 
 //MARK: - 请求用户信息
 extension NetWorkTool{
-    
-    func loadUserInfo(account: UserAccount,finished: (account: UserAccount?,error: NSError?) -> ()){
+   
+    func loadUserInfo(accessToken: String,uid: String,finished:Finished){
         
-        assert(account.access_token != nil, "必须授权之后才能调用")
-        assert(account.uid != nil, "必须授权之后才能调用")
-        
-        let url = "2/users/show.json"
-        
-        let parameter = ["access_token": account.access_token!,"uid": account.uid!]
-        
-        NetWorkTool.shareInstance.GET(url, parameters: parameter, success: { (task:NSURLSessionDataTask, objc: AnyObject?) -> Void in
-            
-            FJLog(objc)
-            
-            let dict = objc as! [String : AnyObject]
-            
-            //保存用户信息
-            account.screen_name = dict["screen_name"] as? String
-            account.avatar_large = dict["avatar_large"] as? String
-            
-            finished(account: account, error: nil)
-            
-            }) { (task: NSURLSessionDataTask?, error: NSError) -> Void in
-                
-                finished(account: nil, error: error)
+        //1.获取请求的url
+        let urlString = "https://api.weibo.com/2/users/show.json"
+        //2.设置请求体
+        let parameter = ["access_token":accessToken,"uid": uid]
+        //3.发送网络请求
+        request(.GET, urlString: urlString, parameters: parameter) { (result, error) -> () in
+            finished(result: result as? [String : AnyObject], error: error)
         }
+
     }
+    
 }

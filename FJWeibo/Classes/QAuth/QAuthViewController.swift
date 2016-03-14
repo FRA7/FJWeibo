@@ -52,7 +52,8 @@ class QAuthViewController: UIViewController {
     
     @objc private func autoAccess(){
         
-        let jsStr = "document.getElementById('userId').value='1606020376@qq.com';" + "document.getElementById('passwd').value='haomage';"
+//        let jsStr = "document.getElementById('userId').value='1606020376@qq.com';" + "document.getElementById('passwd').value='haomage';"
+        let jsStr = "document.getElementById('userId').value='458734857@qq.com';" + "document.getElementById('passwd').value='446126902';"
         
         webView.stringByEvaluatingJavaScriptFromString(jsStr)
     }
@@ -63,34 +64,39 @@ extension QAuthViewController:UIWebViewDelegate{
     //判断是否允许继续访问
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         
-        //1.取出当前请求URL
+        //1.获取URL对应的字符串
         guard let urlStr = request.URL?.absoluteString else{
-            closeBtnClick()
-            return false
-        }
-        //1.2判断是否是授权回调页
-        if !urlStr.hasPrefix(FJ_Redirect_uri){
+//            closeBtnClick()
             return true
         }
-        //2.判断
-        if !urlStr.containsString("error_uri="){
-            //2.1获取code=所在位置
-            guard let range = urlStr.rangeOfString("code=") else{
-                closeBtnClick()
-                return false
-            }
-            //2.2截取字符串
-            let code = urlStr.substringFromIndex(range.endIndex)
-            FJLog(code)
-            loadAccessTaken(code)
+
+        //2.判断字符串中是否有code
+        if !urlStr.containsString("code="){
+            return true
+        }
+
+        //3取出code
+        guard let code = urlStr.componentsSeparatedByString("code=").last else{
+            return true
         }
         
-        //3.关闭页面
-        closeBtnClick()
+        //换取accessToken
+        UserAccountViewModel.shareInstance.loadAccessToken(code) { (isSuccess) -> () in
+            if !isSuccess {
+                return
+            }
+            
+            self.dismissViewControllerAnimated(false, completion: { () -> Void in
+                //显示欢迎界面
+                UIApplication.sharedApplication().keyWindow?.rootViewController = WelcomeViewController()
+            })
+        }
+ 
         return false
+        
     }
     
-///每次请求前调用
+    ///每次请求前调用
     func webViewDidStartLoad(webView: UIWebView) {
         FJLog("正在加载")
 
@@ -100,30 +106,5 @@ extension QAuthViewController:UIWebViewDelegate{
     func webViewDidFinishLoad(webView: UIWebView) {
         
         SVProgressHUD.dismiss()
-    }
-}
-
-//MARK: - 通过请求获取accessToken授权
-extension QAuthViewController{
-    
-    /**
-     通过request token换取access token授权
-     */
-    private func loadAccessTaken(code: String){
-        
-        
-        UserAccountViewModel.shareInstance.loadAccessToken(code,finished: { (account, error) -> () in
-            
-            UserAccountViewModel.shareInstance.loadUserInfo(account!,finished: { (account, error) -> () in
-                if error != nil || account == nil{
-                    SVProgressHUD.showErrorWithStatus("获取用户信息失败" ,maskType: .Black)
-                    return
-                }
-                
-                //保存用户授权信息
-                account!.saveUserAccount()
-                
-            })
-        })
     }
 }

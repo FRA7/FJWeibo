@@ -43,6 +43,14 @@ class UserAccount: NSObject, NSCoding{
         
     }
     
+    ///打印对象
+    override var description:String{
+        get{
+            return dictionaryWithValuesForKeys(["access_token", "expires_in", "uid", "expires_date", "screen_name", "avatar_large"]).description
+        }
+    }
+    
+    //MARK: - 归档&解档
     /// 从文件中读取一个模型时调用
     required init?(coder aDecoder: NSCoder){
         access_token = aDecoder.decodeObjectForKey("access_token") as? String
@@ -61,22 +69,6 @@ class UserAccount: NSObject, NSCoding{
         aCoder.encodeObject(expires_date, forKey: "expires_date")
         aCoder.encodeObject(screen_name, forKey: "screen_name")
         aCoder.encodeObject(avatar_large, forKey: "avatar_large")
-    }
-    
-    ///打印对象
-    override var description:String{
-        let keys = ["access_token", "expires_in", "uid", "expires_date", "screen_name", "avatar_large"]
-        let dict = dictionaryWithValuesForKeys(keys)
-        FJLog(dict)
-        return "\(dict)"
-    }
-    
-    //MARK: - 内部控制方法
-    ///写入对象
-    func saveUserAccount() -> Bool{
-
-        //1.写入对象
-        return NSKeyedArchiver.archiveRootObject(self, toFile: UserAccount.filePath)
     }
     
 }

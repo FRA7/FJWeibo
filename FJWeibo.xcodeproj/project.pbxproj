@@ -15,6 +15,8 @@
 		154FB6801C95447700D15CD1 /* UserAcount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154FB67F1C95447700D15CD1 /* UserAcount.swift */; };
 		154FB6821C95777B00D15CD1 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154FB6811C95777B00D15CD1 /* String+Extension.swift */; };
 		154FB6841C95A19700D15CD1 /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154FB6831C95A19700D15CD1 /* UserAccountViewModel.swift */; };
+		156340E91C96DA2A00E5644D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156340E71C96DA2A00E5644D /* WelcomeViewController.swift */; };
+		156340EA1C96DA2A00E5644D /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156340E81C96DA2A00E5644D /* WelcomeViewController.xib */; };
 		1570C7941C7FFB3E000F0437 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7931C7FFB3E000F0437 /* AppDelegate.swift */; };
 		1570C7961C7FFB3E000F0437 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7951C7FFB3E000F0437 /* ViewController.swift */; };
 		1570C79B1C7FFB3E000F0437 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1570C79A1C7FFB3E000F0437 /* Assets.xcassets */; };
@@ -67,6 +69,8 @@
 		154FB67F1C95447700D15CD1 /* UserAcount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAcount.swift; sourceTree = "<group>"; };
 		154FB6811C95777B00D15CD1 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		154FB6831C95A19700D15CD1 /* UserAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
+		156340E71C96DA2A00E5644D /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		156340E81C96DA2A00E5644D /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		1570C7901C7FFB3E000F0437 /* FJWeibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FJWeibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1570C7931C7FFB3E000F0437 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1570C7951C7FFB3E000F0437 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -135,6 +139,15 @@
 			path = QRCode;
 			sourceTree = "<group>";
 		};
+		156340E01C96CCA900E5644D /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				156340E71C96DA2A00E5644D /* WelcomeViewController.swift */,
+				156340E81C96DA2A00E5644D /* WelcomeViewController.xib */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
 		1570C7871C7FFB3E000F0437 = {
 			isa = PBXGroup;
 			children = (
@@ -190,6 +203,7 @@
 		1570C7C11C80024F000F0437 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				156340E01C96CCA900E5644D /* Welcome */,
 				15AE87CF1C92FF1F00378967 /* QAuth */,
 				1570C7C51C80024F000F0437 /* Main */,
 				1570C7C41C80024F000F0437 /* Home */,
@@ -429,6 +443,7 @@
 				1570C7D61C8040B9000F0437 /* MainVCSettings.json in Resources */,
 				1570C79B1C7FFB3E000F0437 /* Assets.xcassets in Resources */,
 				1532DF5C1C900A5700170377 /* QRCodeViewController.storyboard in Resources */,
+				156340EA1C96DA2A00E5644D /* WelcomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,6 +534,7 @@
 				1570C7D71C8040B9000F0437 /* NullViewController.swift in Sources */,
 				150F43AD1C91B64300797F24 /* QRCodeCardViewController.swift in Sources */,
 				1589C16A1C808AEA00C27D73 /* UIView+AutoLayout.swift in Sources */,
+				156340E91C96DA2A00E5644D /* WelcomeViewController.swift in Sources */,
 				15EE82E11C8539DE004C1984 /* PopoverPresentationController.swift in Sources */,
 				15AE87D11C92FF3500378967 /* QAuthViewController.swift in Sources */,
 				150ABD4D1C848A5F00855E09 /* UITabBarButtonItem+Category.swift in Sources */,

@@ -109,7 +109,7 @@ class HomeTableViewController: BaseTableViewController {
         p.presentFrame = CGRect(x: 100, y: 56, width: 200, height: 350)
         return p
     }()
-    private lazy var statues: [Status] = [Status]()
+    private lazy var statusViewModels: [StatusViewModel] = [StatusViewModel]()
     
     
    }
@@ -130,7 +130,9 @@ extension HomeTableViewController{
             
             //3.边里字典转成模型
             for resultDict in resultArray{
-                self.statues.append(Status(dict: resultDict))
+                let status = Status(dict: resultDict)
+                let statusViewModel = StatusViewModel(status: status)
+                self.statusViewModels.append(statusViewModel)
             }
             
             //4.刷新表格
@@ -146,7 +148,7 @@ extension HomeTableViewController{
     
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return statues.count
+        return statusViewModels.count
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -160,9 +162,9 @@ extension HomeTableViewController{
         }
         
         //给cell设置数据
-        let status = statues[indexPath.row]
-        cell?.textLabel?.text = status.creatAtTimeString
-        cell?.detailTextLabel?.text = status.sourceText
+        let statusViewModel = statusViewModels[indexPath.row]
+        cell?.textLabel?.text = statusViewModel.creatAtTimeString
+        cell?.detailTextLabel?.text = statusViewModel.status?.user?.screen_name
         
         return cell!
     }

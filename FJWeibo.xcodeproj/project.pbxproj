@@ -12,6 +12,7 @@
 		150F43AD1C91B64300797F24 /* QRCodeCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150F43AC1C91B64300797F24 /* QRCodeCardViewController.swift */; };
 		1511D5261C9AF1FF004593A7 /* NSDate+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1511D5251C9AF1FF004593A7 /* NSDate+Extention.swift */; };
 		1511D5281C9AFDDD004593A7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1511D5271C9AFDDD004593A7 /* User.swift */; };
+		1511D52A1C9B059E004593A7 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1511D5291C9B059E004593A7 /* StatusViewModel.swift */; };
 		1532DF5A1C900A4200170377 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1532DF591C900A4200170377 /* QRCodeViewController.swift */; };
 		1532DF5C1C900A5700170377 /* QRCodeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1532DF5B1C900A5700170377 /* QRCodeViewController.storyboard */; };
 		154FB6801C95447700D15CD1 /* UserAcount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154FB67F1C95447700D15CD1 /* UserAcount.swift */; };
@@ -69,6 +70,7 @@
 		150F43AC1C91B64300797F24 /* QRCodeCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeCardViewController.swift; sourceTree = "<group>"; };
 		1511D5251C9AF1FF004593A7 /* NSDate+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extention.swift"; sourceTree = "<group>"; };
 		1511D5271C9AFDDD004593A7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		1511D5291C9B059E004593A7 /* StatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
 		1532DF591C900A4200170377 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		1532DF5B1C900A5700170377 /* QRCodeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QRCodeViewController.storyboard; sourceTree = "<group>"; };
 		154FB67F1C95447700D15CD1 /* UserAcount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAcount.swift; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 			children = (
 				157C22151C9AE31400834A06 /* Status.swift */,
 				1511D5271C9AFDDD004593A7 /* User.swift */,
+				1511D5291C9B059E004593A7 /* StatusViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -537,6 +540,7 @@
 				1570C7D01C8003B6000F0437 /* DiscoverTableViewController.swift in Sources */,
 				15EE82DD1C853575004C1984 /* PopoverViewController.swift in Sources */,
 				1532DF5A1C900A4200170377 /* QRCodeViewController.swift in Sources */,
+				1511D52A1C9B059E004593A7 /* StatusViewModel.swift in Sources */,
 				154FB6801C95447700D15CD1 /* UserAcount.swift in Sources */,
 				1570C7D91C804EB4000F0437 /* ProfileTableViewController.swift in Sources */,
 				1570C7CE1C800382000F0437 /* MessageTableViewController.swift in Sources */,

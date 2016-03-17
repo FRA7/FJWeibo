@@ -27,6 +27,13 @@ class HomeTableViewController: BaseTableViewController {
         //3.注册通知
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: FJPopoverAnimatorWillShow, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: FJPopoverAnimatorWillDismiss, object: nil)
+        
+        
+        //4.发送网络请求
+        loadStatus()
+        
+        
+        
     }
 
     deinit {
@@ -102,8 +109,62 @@ class HomeTableViewController: BaseTableViewController {
         p.presentFrame = CGRect(x: 100, y: 56, width: 200, height: 350)
         return p
     }()
+    private lazy var statues: [Status] = [Status]()
+    
     
    }
+//MARK: - 加载网络请求
+extension HomeTableViewController{
+    
+    private func loadStatus(){
+        NetWorkTool.shareInstance.loadStatus { (result, error) -> () in
+            //1.错误校验
+            if error != nil{
+                FJLog(error)
+                return
+            }
+            //2.判断数组是否有值
+            guard let resultArray = result else{
+                return
+            }
+            
+            //3.边里字典转成模型
+            for resultDict in resultArray{
+                self.statues.append(Status(dict: resultDict))
+            }
+            
+            //4.刷新表格
+            self.tableView.reloadData()
+            
+        }
+    }
+    
+}
 
-
-
+//MARK: - tableVeiwDelegete
+extension HomeTableViewController{
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return statues.count
+    }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let HomeID = "homeID"
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier(HomeID)
+        
+        if cell == nil{
+            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: HomeID)
+        }
+        
+        //给cell设置数据
+        let status = statues[indexPath.row]
+        cell?.textLabel?.text = status.created_at
+        cell?.detailTextLabel?.text = status.text
+        
+        return cell!
+    }
+    
+}

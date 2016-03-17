@@ -30,6 +30,7 @@
 		1570C7D71C8040B9000F0437 /* NullViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7D51C8040B9000F0437 /* NullViewController.swift */; };
 		1570C7D91C804EB4000F0437 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7D81C804EB4000F0437 /* ProfileTableViewController.swift */; };
 		1570C7DB1C807980000F0437 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7DA1C807980000F0437 /* BaseTableViewController.swift */; };
+		157C22161C9AE31400834A06 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157C22151C9AE31400834A06 /* Status.swift */; };
 		1589C1661C80838D00C27D73 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589C1651C80838D00C27D73 /* VisitorView.swift */; };
 		1589C16A1C808AEA00C27D73 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589C1691C808AEA00C27D73 /* UIView+AutoLayout.swift */; };
 		158EC87D1C93B50C0037D0AE /* NetWorkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EC87C1C93B50C0037D0AE /* NetWorkTool.swift */; };
@@ -90,6 +91,7 @@
 		1570C7D51C8040B9000F0437 /* NullViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullViewController.swift; sourceTree = "<group>"; };
 		1570C7D81C804EB4000F0437 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		1570C7DA1C807980000F0437 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
+		157C22151C9AE31400834A06 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
 		1589C1651C80838D00C27D73 /* VisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		1589C1691C808AEA00C27D73 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		158EC87C1C93B50C0037D0AE /* NetWorkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkTool.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 		1570C7C41C80024F000F0437 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				157C22141C9AE2F900834A06 /* Model */,
 				1532DF581C900A2000170377 /* QRCode */,
 				15EE82DB1C853548004C1984 /* Popover */,
 				1570C7CB1C800320000F0437 /* HomeTableViewController.swift */,
@@ -288,6 +291,14 @@
 				1570C7D51C8040B9000F0437 /* NullViewController.swift */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		157C22141C9AE2F900834A06 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				157C22151C9AE31400834A06 /* Status.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		15AE87CF1C92FF1F00378967 /* QAuth */ = {
@@ -525,6 +536,7 @@
 				1570C7CE1C800382000F0437 /* MessageTableViewController.swift in Sources */,
 				1570C7CA1C8002F4000F0437 /* MainViewController.swift in Sources */,
 				15EE82E51C8580A6004C1984 /* PopoverAnimator.swift in Sources */,
+				157C22161C9AE31400834A06 /* Status.swift in Sources */,
 				15AE87D31C9300EB00378967 /* Common.swift in Sources */,
 				1570C7961C7FFB3E000F0437 /* ViewController.swift in Sources */,
 				1570C7CC1C800320000F0437 /* HomeTableViewController.swift in Sources */,

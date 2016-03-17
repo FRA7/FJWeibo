@@ -91,3 +91,34 @@ extension NetWorkTool{
     }
     
 }
+
+extension NetWorkTool{
+    
+    func loadStatus(finished: (result: [[String: AnyObject]]?,error: NSError?) -> ()){
+        
+        //1.请求地址
+        let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
+        //2.获取请求内容
+        guard let accessToken = UserAccountViewModel.shareInstance.account?.access_token else{
+            return
+        }
+        //access_token = 2.00_i9uOE0fNBB303fdecc6ccKQoiXC
+        let parameters = ["access_token": accessToken]
+        
+//        FJLog(parameters)
+        
+        //3.发送请求
+        request(.GET, urlString: urlString, parameters: parameters) { (result, error) -> () in
+            
+            //3.1解析数据,将anyObject转成字典
+            guard let resultDict = result as? [String: AnyObject] else{
+                finished(result: nil, error: error)
+                return
+            }
+//            FJLog(resultDict)
+            //3.2从字典中取出数据进行回调
+            finished(result: resultDict["statuses"] as? [[String: AnyObject]], error: error)
+        }
+        
+    }
+}

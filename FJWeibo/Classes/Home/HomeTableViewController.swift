@@ -161,8 +161,8 @@ extension HomeTableViewController{
         
         //给cell设置数据
         let status = statues[indexPath.row]
-        cell?.textLabel?.text = status.created_at
-        cell?.detailTextLabel?.text = status.text
+        cell?.textLabel?.text = status.creatAtTimeString
+        cell?.detailTextLabel?.text = status.sourceText
         
         return cell!
     }

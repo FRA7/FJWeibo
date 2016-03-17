@@ -53,7 +53,8 @@ class QAuthViewController: UIViewController {
     @objc private func autoAccess(){
         
 //        let jsStr = "document.getElementById('userId').value='1606020376@qq.com';" + "document.getElementById('passwd').value='haomage';"
-        let jsStr = "document.getElementById('userId').value='458734857@qq.com';" + "document.getElementById('passwd').value='446126902';"
+//        let jsStr = "document.getElementById('userId').value='458734857@qq.com';" + "document.getElementById('passwd').value='446126902';"
+         let jsStr = "document.getElementById('userId').value='18626350685';" + "document.getElementById('passwd').value='j446126902';"
         
         webView.stringByEvaluatingJavaScriptFromString(jsStr)
     }

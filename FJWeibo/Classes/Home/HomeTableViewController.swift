@@ -11,16 +11,12 @@ import UIKit
 class HomeTableViewController: BaseTableViewController {
 
   
-    private let HomeID = "homeID"
+     let HomeID = "homeID"
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        //0.注册cell
-        tableView.registerNib(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: HomeID)
-        
-//        tableView.estimatedRowHeight = 200
-//        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+
         
 //        tableView.backgroundColor = UIColor.blueColor()
         //1.如果没有登录就设置登录界面
@@ -30,20 +26,26 @@ class HomeTableViewController: BaseTableViewController {
             return
         }
         
-        //2.初始化导航条
+        //2.注册cell
+        tableView.registerNib(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: HomeID)
+        
+        //去除cell分割线
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+        
+        //3.初始化导航条
         setUpNav()
         
-        //3.注册通知
+        //4.注册通知
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: FJPopoverAnimatorWillShow, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: FJPopoverAnimatorWillDismiss, object: nil)
         
-        
-        
-        
-        //4.发送网络请求
+ 
+        //5.发送网络请求
         loadStatus()
         
-        tableView.rowHeight = 300
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 200
         
         
     }
@@ -158,11 +160,7 @@ extension HomeTableViewController{
 //MARK: - tableVeiwDelegete
 extension HomeTableViewController{
     
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        return 200
-//    }
-    
-    
+   
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return statusViewModels.count
@@ -174,14 +172,11 @@ extension HomeTableViewController{
         
         let cell = tableView.dequeueReusableCellWithIdentifier(HomeID) as! HomeTableViewCell
         
-//        if cell == nil{
-//            cell = HomeViewCell(style: .Subtitle, reuseIdentifier: HomeID)
-//        }
+
         
         //给cell设置数据
         cell.statusViewModel = statusViewModels[indexPath.row]
-//        cell?.textLabel?.text = statusViewModel.creatAtTimeString
-//        cell?.detailTextLabel?.text = statusViewModel.status?.user?.screen_name
+
         
         return cell
     }

@@ -7,11 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="187" id="KGk-i7-Jjw" customClass="HomeTableViewCell" customModule="FJWeibo" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="369" height="187"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="246" id="KGk-i7-Jjw" customClass="HomeTableViewCell" customModule="FJWeibo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="369" height="246"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="369" height="186.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="369" height="245.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wfR-yG-Cqe" userLabel="头像">
@@ -60,7 +60,7 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKG-L7-awa" userLabel="底部工具条">
-                        <rect key="frame" x="0.0" y="146" width="369" height="40"/>
+                        <rect key="frame" x="0.0" y="205.5" width="369" height="40"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bj1-px-00i">
                                 <rect key="frame" x="123" y="1" width="123" height="32"/>
@@ -133,7 +133,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="走,卖白菜去" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwk-yF-Qn3" userLabel="内容">
-                        <rect key="frame" x="15" y="70" width="339" height="16.5"/>
+                        <rect key="frame" x="15" y="70" width="339" height="75.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="339" id="RBH-gj-xsp"/>
                         </constraints>
@@ -141,8 +141,8 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="96t-vt-wOb">
-                        <rect key="frame" x="15" y="96.5" width="240" height="40"/>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="96t-vt-wOb" customClass="PicCollectionView" customModule="FJWeibo" customModuleProvider="target">
+                        <rect key="frame" x="15" y="155.5" width="240" height="40"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="240" id="FKT-xa-E1T"/>
                             <constraint firstAttribute="height" constant="40" id="RAP-oi-Dkh"/>
@@ -153,6 +153,9 @@
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
+                        <connections>
+                            <outlet property="dataSource" destination="ZUH-DK-m9I" id="w8J-G4-Dfb"/>
+                        </connections>
                     </collectionView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -194,6 +197,7 @@
                 <outlet property="contentLabel" destination="rwk-yF-Qn3" id="WNb-Ai-zBs"/>
                 <outlet property="contentLabelWidthCons" destination="RBH-gj-xsp" id="u89-9P-jcR"/>
                 <outlet property="iconImageView" destination="wfR-yG-Cqe" id="u9t-N7-E5S"/>
+                <outlet property="picCollectionView" destination="96t-vt-wOb" id="nSt-nK-AAw"/>
                 <outlet property="picCollectionViewHeightCons" destination="RAP-oi-Dkh" id="fYv-m9-v7Y"/>
                 <outlet property="picCollectionViewWidthCons" destination="FKT-xa-E1T" id="rJC-ho-db3"/>
                 <outlet property="screenLameLabel" destination="jEl-Wc-T5v" id="oT3-CL-9X1"/>
@@ -202,7 +206,7 @@
                 <outlet property="verifiedImageView" destination="cn0-qk-7wH" id="fgr-4x-eKO"/>
                 <outlet property="vipImageView" destination="lKw-WO-1v3" id="scW-1r-FeV"/>
             </connections>
-            <point key="canvasLocation" x="329.5" y="279.5"/>
+            <point key="canvasLocation" x="194.5" y="322"/>
         </tableViewCell>
     </objects>
     <resources>

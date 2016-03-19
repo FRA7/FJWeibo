@@ -6,13 +6,16 @@
 //  Copyright © 2016年 FRAJ. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 let FJ_App_Key = "325322411"
 let FJ_App_Secret = "ffa181fb13a654b035341703e51ff35f"
 let FJ_Redirect_uri = "http://www.520it.com"
 
 
+
+let edgeMargin : CGFloat = 15
+let padding : CGFloat = 10
 //URL https://api.weibo.com/oauth2/authorize
 //App Key：325322411
 //App Secret：ffa181fb13a654b035341703e51ff35f

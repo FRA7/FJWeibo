@@ -8,8 +8,7 @@
 
 import UIKit
 
-private let edgeMargin:CGFloat = 15
-private let padding: CGFloat  = 10
+
 
 class HomeTableViewCell: UITableViewCell {
 
@@ -37,6 +36,11 @@ class HomeTableViewCell: UITableViewCell {
             let (width,height) = calculatePicCollectionSize(statusViewModel.picURLs.count)
             picCollectionViewWidthCons.constant = width
             picCollectionViewHeightCons.constant = height
+            
+            
+            ///9.设置picCollectionView的picURLs
+            picCollectionView.picURLs = statusViewModel.picURLs
+            
         }
     }
     
@@ -52,6 +56,7 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var bottomToolView: UIView!
+    @IBOutlet weak var picCollectionView: PicCollectionView!
     
     //MARK: - 约束属性
     @IBOutlet weak var contentLabelWidthCons: NSLayoutConstraint!

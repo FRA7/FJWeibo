@@ -59,6 +59,12 @@ class StatusViewModel {
                     
                 }
         
+        
+        ///4.处理头像URL
+        if let urlString = status.user?.profile_image_url{
+            iconURL = NSURL(string: urlString)
+        }
+        
       }
     
     
@@ -77,4 +83,9 @@ class StatusViewModel {
         var vipImage : UIImage?
         /// 认证显示的图标
         var verifiedImage : UIImage?
+    
+        /// 头像的图标
+        var iconURL : NSURL?
+    
+    
 }

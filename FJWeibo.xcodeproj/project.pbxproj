@@ -37,6 +37,8 @@
 		1589C1661C80838D00C27D73 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589C1651C80838D00C27D73 /* VisitorView.swift */; };
 		1589C16A1C808AEA00C27D73 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589C1691C808AEA00C27D73 /* UIView+AutoLayout.swift */; };
 		158EC87D1C93B50C0037D0AE /* NetWorkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EC87C1C93B50C0037D0AE /* NetWorkTool.swift */; };
+		15AB0F001C9B8DDA00F0CC57 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB0EFE1C9B8DDA00F0CC57 /* HomeTableViewCell.swift */; };
+		15AB0F011C9B8DDA00F0CC57 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15AB0EFF1C9B8DDA00F0CC57 /* HomeTableViewCell.xib */; };
 		15AE87D11C92FF3500378967 /* QAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AE87D01C92FF3500378967 /* QAuthViewController.swift */; };
 		15AE87D31C9300EB00378967 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AE87D21C9300EB00378967 /* Common.swift */; };
 		15EE82DD1C853575004C1984 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EE82DC1C853575004C1984 /* PopoverViewController.swift */; };
@@ -101,6 +103,8 @@
 		1589C1651C80838D00C27D73 /* VisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		1589C1691C808AEA00C27D73 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		158EC87C1C93B50C0037D0AE /* NetWorkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkTool.swift; sourceTree = "<group>"; };
+		15AB0EFE1C9B8DDA00F0CC57 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
+		15AB0EFF1C9B8DDA00F0CC57 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		15AE87D01C92FF3500378967 /* QAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAuthViewController.swift; sourceTree = "<group>"; };
 		15AE87D21C9300EB00378967 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		15EE82DC1C853575004C1984 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
@@ -306,6 +310,8 @@
 				157C22151C9AE31400834A06 /* Status.swift */,
 				1511D5271C9AFDDD004593A7 /* User.swift */,
 				1511D5291C9B059E004593A7 /* StatusViewModel.swift */,
+				15AB0EFF1C9B8DDA00F0CC57 /* HomeTableViewCell.xib */,
+				15AB0EFE1C9B8DDA00F0CC57 /* HomeTableViewCell.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -463,6 +469,7 @@
 				1570C7D61C8040B9000F0437 /* MainVCSettings.json in Resources */,
 				1570C79B1C7FFB3E000F0437 /* Assets.xcassets in Resources */,
 				1532DF5C1C900A5700170377 /* QRCodeViewController.storyboard in Resources */,
+				15AB0F011C9B8DDA00F0CC57 /* HomeTableViewCell.xib in Resources */,
 				156340EA1C96DA2A00E5644D /* WelcomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,6 +549,7 @@
 				1532DF5A1C900A4200170377 /* QRCodeViewController.swift in Sources */,
 				1511D52A1C9B059E004593A7 /* StatusViewModel.swift in Sources */,
 				154FB6801C95447700D15CD1 /* UserAcount.swift in Sources */,
+				15AB0F001C9B8DDA00F0CC57 /* HomeTableViewCell.swift in Sources */,
 				1570C7D91C804EB4000F0437 /* ProfileTableViewController.swift in Sources */,
 				1570C7CE1C800382000F0437 /* MessageTableViewController.swift in Sources */,
 				1570C7CA1C8002F4000F0437 /* MainViewController.swift in Sources */,

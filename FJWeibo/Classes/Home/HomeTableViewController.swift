@@ -11,9 +11,18 @@ import UIKit
 class HomeTableViewController: BaseTableViewController {
 
   
+    private let HomeID = "homeID"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //0.注册cell
+        tableView.registerNib(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: HomeID)
+        
+//        tableView.estimatedRowHeight = 200
+//        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
+        
+//        tableView.backgroundColor = UIColor.blueColor()
         //1.如果没有登录就设置登录界面
         if !userLogin{
             
@@ -29,9 +38,12 @@ class HomeTableViewController: BaseTableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: FJPopoverAnimatorWillDismiss, object: nil)
         
         
+        
+        
         //4.发送网络请求
         loadStatus()
         
+        tableView.rowHeight = 300
         
         
     }
@@ -146,6 +158,11 @@ extension HomeTableViewController{
 //MARK: - tableVeiwDelegete
 extension HomeTableViewController{
     
+//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+//        return 200
+//    }
+    
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return statusViewModels.count
@@ -153,20 +170,20 @@ extension HomeTableViewController{
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let HomeID = "homeID"
         
-        var cell = tableView.dequeueReusableCellWithIdentifier(HomeID)
         
-        if cell == nil{
-            cell = UITableViewCell(style: .Subtitle, reuseIdentifier: HomeID)
-        }
+        let cell = tableView.dequeueReusableCellWithIdentifier(HomeID) as! HomeTableViewCell
+        
+//        if cell == nil{
+//            cell = HomeViewCell(style: .Subtitle, reuseIdentifier: HomeID)
+//        }
         
         //给cell设置数据
-        let statusViewModel = statusViewModels[indexPath.row]
-        cell?.textLabel?.text = statusViewModel.creatAtTimeString
-        cell?.detailTextLabel?.text = statusViewModel.status?.user?.screen_name
+        cell.statusViewModel = statusViewModels[indexPath.row]
+//        cell?.textLabel?.text = statusViewModel.creatAtTimeString
+//        cell?.detailTextLabel?.text = statusViewModel.status?.user?.screen_name
         
-        return cell!
+        return cell
     }
     
 }

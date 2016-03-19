@@ -7,11 +7,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="152" id="KGk-i7-Jjw" customClass="HomeTableViewCell" customModule="FJWeibo" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="369" height="152"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="187" id="KGk-i7-Jjw" customClass="HomeTableViewCell" customModule="FJWeibo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="369" height="187"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="369" height="151.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="369" height="186.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wfR-yG-Cqe" userLabel="头像">
@@ -60,7 +60,7 @@
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EKG-L7-awa" userLabel="底部工具条">
-                        <rect key="frame" x="0.0" y="111" width="369" height="40"/>
+                        <rect key="frame" x="0.0" y="146" width="369" height="40"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bj1-px-00i">
                                 <rect key="frame" x="123" y="1" width="123" height="32"/>
@@ -69,16 +69,6 @@
                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="评论" image="timeline_icon_comment">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TB-5G-R3s">
-                                <rect key="frame" x="246" y="1" width="123" height="32"/>
-                                <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                <state key="normal" title="赞" image="timeline_icon_unlike">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -111,6 +101,16 @@
                                     <constraint firstAttribute="height" constant="22" id="oQC-kh-Nsz"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5TB-5G-R3s">
+                                <rect key="frame" x="246" y="1" width="123" height="32"/>
+                                <color key="backgroundColor" red="0.98431372549019602" green="0.98431372549019602" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
+                                <state key="normal" title="赞" image="timeline_icon_unlike">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -133,7 +133,7 @@
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="走,卖白菜去" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwk-yF-Qn3" userLabel="内容">
-                        <rect key="frame" x="15" y="70" width="339" height="31"/>
+                        <rect key="frame" x="15" y="70" width="339" height="16.5"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="339" id="RBH-gj-xsp"/>
                         </constraints>
@@ -141,22 +141,38 @@
                         <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="96t-vt-wOb">
+                        <rect key="frame" x="15" y="96.5" width="240" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="240" id="FKT-xa-E1T"/>
+                            <constraint firstAttribute="height" constant="40" id="RAP-oi-Dkh"/>
+                        </constraints>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="ZUH-DK-m9I">
+                            <size key="itemSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                    </collectionView>
                 </subviews>
                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 <constraints>
                     <constraint firstItem="lKw-WO-1v3" firstAttribute="centerY" secondItem="jEl-Wc-T5v" secondAttribute="centerY" id="1Pb-Vb-qmk"/>
                     <constraint firstItem="jEl-Wc-T5v" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="4zl-Ig-v2q"/>
                     <constraint firstItem="lKw-WO-1v3" firstAttribute="leading" secondItem="jEl-Wc-T5v" secondAttribute="trailing" constant="10" id="AxF-a0-jpX"/>
+                    <constraint firstItem="96t-vt-wOb" firstAttribute="top" secondItem="rwk-yF-Qn3" secondAttribute="bottom" constant="10" id="Bv0-Nv-MPo"/>
                     <constraint firstItem="wfR-yG-Cqe" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="15" id="Ct1-nE-i7q"/>
                     <constraint firstAttribute="bottom" secondItem="EKG-L7-awa" secondAttribute="bottom" id="GzA-zd-GBN"/>
                     <constraint firstItem="EKG-L7-awa" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="HWu-E4-gA0"/>
                     <constraint firstItem="QjD-0J-bdQ" firstAttribute="bottom" secondItem="wfR-yG-Cqe" secondAttribute="bottom" id="HXK-uZ-Nxp"/>
+                    <constraint firstItem="EKG-L7-awa" firstAttribute="top" secondItem="96t-vt-wOb" secondAttribute="bottom" constant="10" id="IGM-9G-rYV"/>
                     <constraint firstItem="fq6-LJ-lCN" firstAttribute="bottom" secondItem="QjD-0J-bdQ" secondAttribute="bottom" id="KI2-Gc-MLq"/>
                     <constraint firstItem="rwk-yF-Qn3" firstAttribute="top" secondItem="cn0-qk-7wH" secondAttribute="bottom" constant="15" id="KVL-rL-Gxj"/>
                     <constraint firstItem="fq6-LJ-lCN" firstAttribute="leading" secondItem="QjD-0J-bdQ" secondAttribute="trailing" constant="10" id="Q1J-vz-b2i"/>
                     <constraint firstItem="wfR-yG-Cqe" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="TFe-8b-GNN"/>
                     <constraint firstItem="jEl-Wc-T5v" firstAttribute="leading" secondItem="wfR-yG-Cqe" secondAttribute="trailing" constant="15" id="ZsC-TS-Cgh"/>
                     <constraint firstItem="cn0-qk-7wH" firstAttribute="bottom" secondItem="wfR-yG-Cqe" secondAttribute="bottom" id="akE-Hc-ire"/>
+                    <constraint firstItem="96t-vt-wOb" firstAttribute="leading" secondItem="wfR-yG-Cqe" secondAttribute="leading" id="bLP-5d-fHT"/>
                     <constraint firstItem="QjD-0J-bdQ" firstAttribute="leading" secondItem="jEl-Wc-T5v" secondAttribute="leading" id="c4S-L8-lt1"/>
                     <constraint firstItem="lKw-WO-1v3" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="dUr-l7-Boy"/>
                     <constraint firstItem="rwk-yF-Qn3" firstAttribute="leading" secondItem="wfR-yG-Cqe" secondAttribute="leading" id="hYZ-9g-Mcr"/>
@@ -169,20 +185,24 @@
                     <mask key="constraints">
                         <exclude reference="4zl-Ig-v2q"/>
                         <exclude reference="dUr-l7-Boy"/>
+                        <exclude reference="keG-4N-KCK"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="bottomToolView" destination="EKG-L7-awa" id="0hV-iu-I4g"/>
                 <outlet property="contentLabel" destination="rwk-yF-Qn3" id="WNb-Ai-zBs"/>
                 <outlet property="contentLabelWidthCons" destination="RBH-gj-xsp" id="u89-9P-jcR"/>
                 <outlet property="iconImageView" destination="wfR-yG-Cqe" id="u9t-N7-E5S"/>
+                <outlet property="picCollectionViewHeightCons" destination="RAP-oi-Dkh" id="fYv-m9-v7Y"/>
+                <outlet property="picCollectionViewWidthCons" destination="FKT-xa-E1T" id="rJC-ho-db3"/>
                 <outlet property="screenLameLabel" destination="jEl-Wc-T5v" id="oT3-CL-9X1"/>
                 <outlet property="sourceLabel" destination="fq6-LJ-lCN" id="pGf-oJ-hCc"/>
                 <outlet property="timeLabel" destination="QjD-0J-bdQ" id="eGG-xq-HUC"/>
                 <outlet property="verifiedImageView" destination="cn0-qk-7wH" id="fgr-4x-eKO"/>
                 <outlet property="vipImageView" destination="lKw-WO-1v3" id="scW-1r-FeV"/>
             </connections>
-            <point key="canvasLocation" x="329.5" y="262"/>
+            <point key="canvasLocation" x="329.5" y="279.5"/>
         </tableViewCell>
     </objects>
     <resources>

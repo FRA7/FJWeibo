@@ -65,6 +65,16 @@ class StatusViewModel {
             iconURL = NSURL(string: urlString)
         }
         
+        ///5.处理微博所有的配图
+        if let picURLDicts = status.pic_urls{
+            for picURLDict in picURLDicts{
+                let urlString = picURLDict["thumbnail_pic"] as? String
+                let picURL = NSURL(string: urlString ?? "")
+                picURLs.append(picURL!)
+            }
+        }
+        
+        
       }
     
     
@@ -86,6 +96,8 @@ class StatusViewModel {
     
         /// 头像的图标
         var iconURL : NSURL?
+        ///所有微博对应的URL数组
+        var picURLs :[NSURL] = [NSURL]()
     
     
 }

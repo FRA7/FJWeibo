@@ -124,6 +124,7 @@ class HomeTableViewController: BaseTableViewController {
         return p
     }()
     private lazy var statusViewModels: [StatusViewModel] = [StatusViewModel]()
+    private lazy var cellHeightCache : [String : CGFloat] = [String : CGFloat]()
     
     
    }
@@ -159,7 +160,28 @@ extension HomeTableViewController{
 
 //MARK: - tableVeiwDelegete
 extension HomeTableViewController{
-    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        //1.取出模型对象
+        let statusViewModel = statusViewModels[indexPath.row]
+        //2.从缓存池中取出高度
+        var cellHeight:CGFloat? = cellHeightCache["\(statusViewModel.status?.id)"]
+        if cellHeight != nil{
+            return cellHeight!
+        }
+        
+        //3.取出cell
+        let cell = tableView.dequeueReusableCellWithIdentifier(HomeID) as! HomeTableViewCell
+        
+        //4.获取cell高度
+        cellHeight = cell.cellHeight(statusViewModel)
+        
+        //5.缓存高度
+        cellHeightCache["\(statusViewModel.status?.id)"] = cellHeight!
+        
+        return cellHeight!
+        
+        
+    }
    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         

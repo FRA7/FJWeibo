@@ -21,6 +21,8 @@ class Status: NSObject {
 
     ///用户信息
     var user: User?
+    ///微博配图
+    var pic_urls: [[String: AnyObject]]?
     
     //MARK: - 自定义构造函数
     init(dict: [String: AnyObject]) {

@@ -9,6 +9,7 @@
 import UIKit
 
 private let edgeMargin:CGFloat = 15
+private let padding: CGFloat  = 10
 
 class HomeTableViewCell: UITableViewCell {
 
@@ -32,6 +33,10 @@ class HomeTableViewCell: UITableViewCell {
             sourceLabel.text = statusViewModel.sourceText
             //7.设置内容
             contentLabel.text = statusViewModel.status?.text
+            ///8.设置picCollectionView的宽度高度约束
+            let (width,height) = calculatePicCollectionSize(statusViewModel.picURLs.count)
+            picCollectionViewWidthCons.constant = width
+            picCollectionViewHeightCons.constant = height
         }
     }
     
@@ -46,9 +51,12 @@ class HomeTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var sourceLabel: UILabel!
     @IBOutlet weak var contentLabel: UILabel!
+    @IBOutlet weak var bottomToolView: UIView!
     
+    //MARK: - 约束属性
     @IBOutlet weak var contentLabelWidthCons: NSLayoutConstraint!
-    
+    @IBOutlet weak var picCollectionViewWidthCons: NSLayoutConstraint!
+    @IBOutlet weak var picCollectionViewHeightCons: NSLayoutConstraint!
     
     //MARK: - 系统回调函数
     override func awakeFromNib() {
@@ -56,4 +64,42 @@ class HomeTableViewCell: UITableViewCell {
          contentLabelWidthCons.constant = UIScreen.mainScreen().bounds.width - 2 * edgeMargin
     }
     
+}
+
+extension HomeTableViewCell{
+    
+    private func calculatePicCollectionSize(count: Int) -> (CGFloat, CGFloat){
+        //1.如果没有图片
+        if count == 0{
+            return (0,0)
+        }
+        
+        //2.计算图片的宽度和高度
+        let imageWH = (UIScreen.mainScreen().bounds.width - 2 * edgeMargin - 2 * padding) / 3
+        
+        
+        //3.如果为四张图片
+        if count == 4{
+            let width = 2 * imageWH + padding
+            let height = 2 * imageWH + padding
+            return (width,height)
+        }
+        
+        //4.其他图片
+        //4.1计算行数
+        let row = CGFloat((count - 1)/3 + 1)
+        //4.2计算宽度和高度
+        let width = imageWH * 3 + padding * 2
+        let height = row * imageWH + (row - 1) * padding
+        return (width,height)
+    }
+    
+    func cellHeight(statusViewModel:StatusViewModel) -> CGFloat{
+        //1.给模型对象属性赋值
+        self.statusViewModel = statusViewModel
+        //2.更新所有约束
+        self.layoutIfNeeded()
+        //3.返回底部工具栏最大的Y值
+        return CGRectGetMaxY(bottomToolView.frame)
+    }
 }

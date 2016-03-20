@@ -20,6 +20,8 @@ class HomeViewCell: UITableViewCell {
     @IBOutlet weak var contentLabel: UILabel!
     @IBOutlet weak var bottomToolView: UIView!
     @IBOutlet weak var picCollectionView: PicCollectionView!
+    @IBOutlet weak var retweetedContentLabel: UILabel!
+    
     
     // MARK:- 约束属性
     @IBOutlet weak var contentLabelWidthCons: NSLayoutConstraint!
@@ -56,6 +58,13 @@ class HomeViewCell: UITableViewCell {
             
             // 10.设置picCollectionView的picURLs
             picCollectionView.picURLs = statusViewModel.picURLs
+            
+            //11.设置转发微博的内容
+            if statusViewModel.status?.retweeted_status != nil {
+                retweetedContentLabel.text = statusViewModel.status?.retweeted_status?.text
+            }else{
+                retweetedContentLabel.text = nil
+            }
         }
     }
     

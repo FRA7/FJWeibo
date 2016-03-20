@@ -21,10 +21,12 @@ class HomeViewCell: UITableViewCell {
     @IBOutlet weak var bottomToolView: UIView!
     @IBOutlet weak var picCollectionView: PicCollectionView!
     @IBOutlet weak var retweetedContentLabel: UILabel!
-    
+    @IBOutlet weak var retweetedBgView: UIView!
     
     // MARK:- 约束属性
     @IBOutlet weak var contentLabelWidthCons: NSLayoutConstraint!
+    @IBOutlet weak var retweetedLabelTopCons: NSLayoutConstraint!
+    @IBOutlet weak var picCollectionViewTopCons: NSLayoutConstraint!
     
     // MARK:- 定义模型对象的属性
     var statusViewModel : StatusViewModel? {
@@ -61,10 +63,24 @@ class HomeViewCell: UITableViewCell {
             
             //11.设置转发微博的内容
             if statusViewModel.status?.retweeted_status != nil {
-                retweetedContentLabel.text = statusViewModel.status?.retweeted_status?.text
+                //1).设置转发微博正文
+                retweetedContentLabel.text = "@" + (statusViewModel.status?.retweeted_status?.user?.screen_name)! + ": " + (statusViewModel.status?.retweeted_status?.text ?? "")
+                //2).修改转发微博的label距离顶部的约束
+                retweetedLabelTopCons.constant = 15
+                //3).设置转发微博背景显示
+                retweetedBgView.hidden = false
+                
             }else{
+                //1).设置转发微博内容
                 retweetedContentLabel.text = nil
+                //2).修改转发微博的label距离顶部的约束
+                retweetedLabelTopCons.constant = 0
+                //3).设置转发微博背景显示
+                retweetedBgView.hidden = true
             }
+            
+            //12.判断是否有图片
+            picCollectionViewTopCons.constant = statusViewModel.picURLs.count == 0 ? 0 : 10
         }
     }
     

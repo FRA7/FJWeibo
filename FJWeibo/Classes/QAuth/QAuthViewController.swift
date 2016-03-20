@@ -18,94 +18,110 @@ import SVProgressHUD
 
 
 class QAuthViewController: UIViewController {
-
-    override func loadView() {
-        //将控制器的view替换为webView
-        view = webView
-        webView.delegate = self
-    }
+    // MARK:- 控件属性
+    @IBOutlet weak var webView: UIWebView!
     
+    // MARK:- 系统回调函数
     override func viewDidLoad() {
         super.viewDidLoad()
-      
         
-        //左侧导航条按钮
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("closeBtnClick"))
-        //右侧导航条按钮
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "填充", style: UIBarButtonItemStyle.Plain, target: self, action: Selector("autoAccess"))
+        // 1.设置导航栏的内容
+        setupNavigationBar()
         
-        
-        //发送请求
-        let str = "https://api.weibo.com/oauth2/authorize?client_id=\(FJ_App_Key)&redirect_uri=\(FJ_Redirect_uri)"
-        let url = NSURL(string: str)!
-        let request = NSURLRequest(URL: url)
-        webView.loadRequest(request)
-    }
-    
-    //MARK: - 懒加载
-    private lazy var webView = UIWebView()
-
-    //MARK: - 内部调用方法
-    @objc private func closeBtnClick(){
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    @objc private func autoAccess(){
-        
-//        let jsStr = "document.getElementById('userId').value='1606020376@qq.com';" + "document.getElementById('passwd').value='haomage';"
-//        let jsStr = "document.getElementById('userId').value='458734857@qq.com';" + "document.getElementById('passwd').value='446126902';"
-         let jsStr = "document.getElementById('userId').value='18626350685';" + "document.getElementById('passwd').value='j446126902';"
-        
-        webView.stringByEvaluatingJavaScriptFromString(jsStr)
+        // 2.加载登录的页面
+        loadPage()
     }
 }
 
-//MARK: - WebView代理方法
-extension QAuthViewController:UIWebViewDelegate{
-    //判断是否允许继续访问
+// MARK:- 设置界面的信息
+extension QAuthViewController {
+    private func setupNavigationBar() {
+        // 1.设置左侧的Item
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: .Plain, target: self, action: "close")
+        
+        // 2.设置右侧的Item
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "填充", style: .Plain, target: self, action: "autoFill")
+        
+        // 3.设置标题
+        title = "登录页面"
+    }
+    
+    private func loadPage() {
+        // 1.获取urlString
+        let urlString = "https://api.weibo.com/oauth2/authorize?client_id=\(FJ_App_Key)&redirect_uri=\(FJ_Redirect_uri)"
+        
+        // 2.创建URL
+        guard let url = NSURL(string: urlString) else {
+            return
+        }
+        
+        // 3.创建URLRequest对象
+        let request = NSURLRequest(URL: url)
+        
+        // 4.加载request对象
+        webView.loadRequest(request)
+    }
+    
+    @objc private func close() {
+        SVProgressHUD.dismiss()
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @objc private func autoFill() {
+        // 1.获取要执行的js(JavaScript)代码
+        let jsCode = "document.getElementById('userId').value='18626350685';document.getElementById('passwd').value='j446126902';"
+        
+        // 2.webView执行js代码
+        webView.stringByEvaluatingJavaScriptFromString(jsCode)
+    }
+}
+
+// MARK:- UIWebViewDelegate
+extension QAuthViewController : UIWebViewDelegate {
+    func webViewDidStartLoad(webView: UIWebView) {
+        SVProgressHUD.show()
+    }
+    
+    func webViewDidFinishLoad(webView: UIWebView) {
+        SVProgressHUD.dismiss()
+    }
+    
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+        SVProgressHUD.dismiss()
+    }
+    
+    // 加载某一个页面时会执行该方法
+    // 返回值 : true : 继续加载该页面 false : 不会加载该页面
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        
-        //1.获取URL对应的字符串
-        guard let urlStr = request.URL?.absoluteString else{
-//            closeBtnClick()
-            return true
-        }
-
-        //2.判断字符串中是否有code
-        if !urlStr.containsString("code="){
-            return true
-        }
-
-        //3取出code
-        guard let code = urlStr.componentsSeparatedByString("code=").last else{
+        // 1.获取URL对应的字符串
+        guard let urlString = request.URL?.absoluteString else {
             return true
         }
         
-        //换取accessToken
-        UserAccountViewModel.shareInstance.loadAccessToken(code) { (isSuccess) -> () in
+        // 2.判断字符串中是否有code
+        if !urlString.containsString("code=") {
+            return true
+        }
+        
+        // 3.取出code
+        guard let codeString = urlString.componentsSeparatedByString("code=").last else {
+            return true
+        }
+        
+        // 4.换取AccessToken
+        UserAccountViewModel.shareInstance
+            .loadAccessToken(codeString) { (isSuccess) -> () in
             if !isSuccess {
                 return
             }
             
             self.dismissViewControllerAnimated(false, completion: { () -> Void in
-                //显示欢迎界面
+                // 显示欢迎界面
                 UIApplication.sharedApplication().keyWindow?.rootViewController = WelcomeViewController()
             })
         }
- 
+        
         return false
-        
     }
-    
-    ///每次请求前调用
-    func webViewDidStartLoad(webView: UIWebView) {
-        FJLog("正在加载")
 
-        SVProgressHUD.showInfoWithStatus("正在加载", maskType: .Black)
-    }
-    ///每次请求完成调用
-    func webViewDidFinishLoad(webView: UIWebView) {
-        
-        SVProgressHUD.dismiss()
-    }
 }

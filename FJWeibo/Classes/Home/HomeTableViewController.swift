@@ -7,53 +7,45 @@
 //
 
 import UIKit
+import SDWebImage
 
 class HomeTableViewController: BaseTableViewController {
 
-  
-     let HomeID = "homeID"
+    // MARK:- 懒加载属性
+    private lazy var titleBtn : TitleButton = TitleButton(type: .Custom)
+    private lazy var popoverAnimator : PopoverAnimator = PopoverAnimator() // 动画管理的对象
+    private lazy var statusViewModels : [StatusViewModel] = [StatusViewModel]()
+    private lazy var cellHeightCache : [String : CGFloat] = [String : CGFloat]()
     
+    //记录菜单是否展开
+    var isPresent :Bool = false
+    
+    // MARK:- 系统回调函数
     override func viewDidLoad() {
         super.viewDidLoad()
-
-
         
-//        tableView.backgroundColor = UIColor.blueColor()
-        //1.如果没有登录就设置登录界面
-        if !userLogin{
-            
-            visitorView?.setUpVisitorInfo(true,imageName:"visitordiscover_feed_image_house",message:"关注一些人，回这里看看有什么惊喜")
+        // 1.判断用户是否登录
+        if !isLogin {
+            visitorView.addRotationAnimate()
             return
         }
         
-        //2.注册cell
-        tableView.registerNib(UINib(nibName: "HomeTableViewCell", bundle: nil), forCellReuseIdentifier: HomeID)
-        
-        //去除cell分割线
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.None
-        
-        
-        //3.初始化导航条
-        setUpNav()
+        // 2.初始化导航栏
+        setupNavigationBar()
         
         //4.注册通知
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: FJPopoverAnimatorWillShow, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: FJPopoverAnimatorWillDismiss, object: nil)
         
- 
-        //5.发送网络请求
-        loadStatus()
-        
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 500
-        
-        
+        // 3.请求数据
+        loadStatuses()
     }
-
+    
     deinit {
         //移除通知
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
+    
     /**
      设置标题按钮状态
      */
@@ -62,28 +54,44 @@ class HomeTableViewController: BaseTableViewController {
         let titleB = navigationItem.titleView as! TitleButton
         titleB.selected = !titleB.selected
     }
-    
-    
-    private func setUpNav(){
+}
+
+
+// MARK:- 设置导航栏的内容
+extension HomeTableViewController {
+    private func setupNavigationBar() {
+        // 1.设置左侧的Item
+        navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "navigationbar_friendattention", target: self, action: "leftItemClick")
         
-        //1.初始化导航条按钮
-        //设置左边按钮
-        navigationItem.leftBarButtonItem = UIBarButtonItem.creatBarButtonItem("navigationbar_friendattention", target: self, action: "leftItemClick")
-        //设置右边按钮
-        navigationItem.rightBarButtonItem = UIBarButtonItem.creatBarButtonItem("navigationbar_pop", target: self, action: "rightItemClick")
+        // 2.设置右侧的Item
+        navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "navigationbar_pop", target: self, action: "rightItemClick")
         
-        //2.初始化标题按钮
-        let titleBtn = TitleButton()
-        let name = UserAccountViewModel.shareInstance.screen_name
-        FJLog("name = \(name)")
-        titleBtn.setTitle(name, forState: UIControlState.Normal)
-        titleBtn.addTarget(self, action: "titleButtonClick:", forControlEvents: UIControlEvents.TouchUpInside)
+        // 3.设置标题按钮
+        
+        let name = UserAccountViewModel.shareInstance.account?.screen_name
+        titleBtn.setTitle(name, forState: .Normal)
+        titleBtn.addTarget(self, action: "titleBtnClick:", forControlEvents: .TouchUpInside)
         navigationItem.titleView = titleBtn
-        
+    }
+}
+
+
+// MARK:- 事件监听函数
+extension HomeTableViewController {
+    @objc private func leftItemClick() {
+        FJLog("leftItemClick")
     }
     
-    func titleButtonClick(btn:TitleButton){
-
+    @objc private func rightItemClick() {
+//        FJLog("rightItemClick")
+        
+        let sb = UIStoryboard(name: "QRCodeViewController", bundle: nil)
+        let vc = sb.instantiateInitialViewController()
+        
+        presentViewController(vc!, animated: true, completion: nil)
+    }
+    
+    @objc private func titleBtnClick(titleBtn : TitleButton) {
         //1.弹出菜单
         let sb = UIStoryboard(name: "PopoverViewController", bundle: nil)
         let vc = sb.instantiateInitialViewController()
@@ -93,117 +101,108 @@ class HomeTableViewController: BaseTableViewController {
         //2.2设置转场样式
         vc?.modalPresentationStyle = UIModalPresentationStyle.Custom
         
-        presentViewController(vc!, animated: true, completion: nil)
-        
-        
-    }
-    
-     func leftItemClick(){
-        FJLog(__FUNCTION__)
-       
-    }
-     func rightItemClick(){
+        presentViewController(vc!, animated: true, completion: nil)    }
+}
 
-        
-        let sb = UIStoryboard(name: "QRCodeViewController", bundle: nil)
-        let vc = sb.instantiateInitialViewController()
-        
-        presentViewController(vc!, animated: true, completion: nil)
+
+// MARK:- tableView的数据源方法和代理方法
+extension HomeTableViewController {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return statusViewModels.count
     }
     
-    //记录菜单是否展开
-    var isPresent :Bool = false
-    
-    
-    //定义一个对象保存自定义转场动画
-    //MARK: - 懒加载
-    private lazy var popoverAnimator:PopoverAnimator = {
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // 1.创建cell
+        let cell = tableView.dequeueReusableCellWithIdentifier("HomeCell") as! HomeViewCell
         
-        let p = PopoverAnimator()
-        p.presentFrame = CGRect(x: 100, y: 56, width: 200, height: 350)
-        return p
-    }()
-    private lazy var statusViewModels: [StatusViewModel] = [StatusViewModel]()
-    private lazy var cellHeightCache : [String : CGFloat] = [String : CGFloat]()
+        // 2.给cell设置数据
+        cell.statusViewModel = statusViewModels[indexPath.row]
+        
+        return cell
+    }
     
-    
-   }
-//MARK: - 加载网络请求
-extension HomeTableViewController{
-    
-    private func loadStatus(){
-        NetWorkTool.shareInstance.loadStatus { (result, error) -> () in
-            //1.错误校验
-            if error != nil{
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        // 0.取出模型对象
+        let statusViewModel = statusViewModels[indexPath.row]
+        
+        // 1.先从缓存池中取出高度
+        var cellHeight : CGFloat? = cellHeightCache["\(statusViewModel.status!.id)"]
+        if cellHeight != nil {
+            return cellHeight!
+        }
+        
+        // 2.取出indexPath对应的cell
+        let cell = tableView.dequeueReusableCellWithIdentifier("HomeCell") as! HomeViewCell
+        
+        // 3.获取cell的高度
+        cellHeight = cell.cellHeight(statusViewModel)
+        
+        // 4.缓存高度
+        cellHeightCache["\(statusViewModel.status!.id)"] = cellHeight!
+        
+        return cellHeight!
+    }
+}
+
+
+// MARK:- 网络请求
+extension HomeTableViewController {
+    /// 请求首页数据
+    private func loadStatuses() {
+        NetWorkTool.shareInstance.loadStatuses { (result, error) -> () in
+            // 1.错误校验
+            if error != nil {
                 FJLog(error)
                 return
             }
-            //2.判断数组是否有值
-            guard let resultArray = result else{
+            
+            // 2.判断数组是否有值
+            guard let resultArray = result else {
                 return
             }
             
-            //3.边里字典转成模型
-            for resultDict in resultArray{
+            // 3.遍历数组,将数组中的字典转成模型对象
+            for resultDict in resultArray {
                 let status = Status(dict: resultDict)
                 let statusViewModel = StatusViewModel(status: status)
                 self.statusViewModels.append(statusViewModel)
             }
             
-            
-            //4.刷新表格
-            self.tableView.reloadData()
-            
+            // 4.缓存图片
+            self.cacheImages()
         }
     }
     
-}
-
-//MARK: - tableVeiwDelegete
-extension HomeTableViewController{
-//    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-//        //1.取出模型对象
-//        let statusViewModel = statusViewModels[indexPath.row]
-//        //2.从缓存池中取出高度
-//        var cellHeight:CGFloat? = cellHeightCache["\(statusViewModel.status!.id)"]
-//        if cellHeight != nil{
-//            return cellHeight!
-//        }
-//        
-//        //3.取出cell
-//        let cell = tableView.dequeueReusableCellWithIdentifier(HomeID) as! HomeTableViewCell
-//        
-//        //4.获取cell高度
-//        cellHeight = cell.cellHeight(statusViewModel)
-//        
-//        //5.缓存高度
-//        cellHeightCache["\(statusViewModel.status!.id)"] = cellHeight!
-//        
-//        FJLog(cellHeight)
-//        
-//        return cellHeight!
-//
-//        
-//        
-//    }
-    
-
-   
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    /// 缓存图片
+    private func cacheImages() {
+        //0.创建group
+        let group = dispatch_group_create()
         
-        return statusViewModels.count
-    }
-    
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        // 1.缓存图片
+        // 1.1.遍历所有的微博
+        for status in statusViewModels {
+            // 1.2.遍历所有的微博中url
+            for url in status.picURLs {
+                
+                // 1.3.将一部请求加载group中
+                dispatch_group_enter(group)
+                
+                // 1.4.缓存图片
+                SDWebImageManager.sharedManager().downloadImageWithURL(url, options: [], progress: nil, completed: { (_, _, _, _, _) -> Void in
+                    FJLog("下载了一张图片")
+                    
+                    // 1.5.将异步处理从group中移除掉
+                    dispatch_group_leave(group)
+                })
+            }
+        }
         
-      
-        let cell = tableView.dequeueReusableCellWithIdentifier(HomeID) as! HomeTableViewCell
-    
-        //给cell设置数据
-        cell.statusViewModel = statusViewModels[indexPath.row]
-
-       
-        return cell
+        // 2.刷新表格
+        dispatch_group_notify(group, dispatch_get_main_queue()) { () -> Void in
+            FJLog("刷新表格")
+            self.tableView.reloadData()
+        }
     }
-    
+
 }

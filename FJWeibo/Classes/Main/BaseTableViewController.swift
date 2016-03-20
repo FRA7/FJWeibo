@@ -8,49 +8,53 @@
 
 import UIKit
 
-class BaseTableViewController: UITableViewController,VisitorViewDelegate {  //遵循代理协议
-    //定义一个变量保存用户是否登陆
-    var userLogin = UserAccountViewModel.shareInstance.isLogin
+class BaseTableViewController: UITableViewController {  
+    // MARK:- 懒加载
+    lazy var visitorView : VisitorView = VisitorView.visitorView()
     
-    //定义属性保存未登录界面
-    var visitorView:VisitorView?
+    // MARK:- 属性
+    var isLogin : Bool = UserAccountViewModel.shareInstance.isLogin
     
+    // MARK:- 系统回调函数
     override func loadView() {
-        userLogin ? super.loadView() :setUpVisterView()
-        
-        FJLog(userLogin)
+        isLogin ? super.loadView() : setupVisitorView()
     }
-        
-    //MARK: - 创建未登录界面
-    private func setUpVisterView(){
-        
-        //1.初始化未登录界面
-        let costomView = VisitorView()
-        //1.1设置当期view成为访客界面的代理
-        costomView.delegate = self
-        
-        
-        view = costomView
-        visitorView = costomView
-        
-        //2.设置导航条按钮
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: UIBarButtonItemStyle.Plain, target: self, action: "registerBtnWillClick")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登陆", style: UIBarButtonItemStyle.Plain, target: self, action: "loginBtnWillClick")
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
-  
 }
-//MARK: - 导航条按钮点击事件
-extension BaseTableViewController{
-    
-    func registerBtnWillClick(){
+
+
+extension BaseTableViewController {
+    /// 加载访客视图
+    private func setupVisitorView() {
+        // 1.访客视图
+        view = visitorView
         
-        FJLog(__FUNCTION__)
+        // 2.添加导航栏左右的item
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .Plain, target: self, action: "registerBtnClick")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .Plain, target: self, action: "loginBtnClick")
+        
+        // 3.监听访客视图中注册和登录按钮的点击
+        visitorView.registerBtn.addTarget(self, action: "test:name:", forControlEvents: .TouchUpInside)
+        visitorView.loginBtn.addTarget(self, action: "loginBtnClick", forControlEvents: .TouchUpInside)
     }
-    
-    func loginBtnWillClick(){
+}
+
+
+extension BaseTableViewController {
+    @objc private func registerBtnClick() {
+        FJLog("registerBtnClick")
+    }
+    @objc private func loginBtnClick() {
+        // 1.创建授权页面
+        let oauthVc = QAuthViewController()
         
-        let view = QAuthViewController()
-        let nav = UINavigationController(rootViewController: view)
-        presentViewController(nav, animated: true, completion: nil)
+        // 2.包装导航控制器
+        let oauthNav = UINavigationController(rootViewController: oauthVc)
+        
+        // 3.弹出授权页面
+        presentViewController(oauthNav, animated: true, completion: nil)
     }
 }

@@ -89,7 +89,7 @@ extension NetWorkTool {
 
 // MARK:- 请求微博的首页数据
 extension NetWorkTool {
-    func loadStatuses(finished : (result : [[String : AnyObject]]?, error : NSError?) -> ()) {
+    func loadStatuses(since_id: Int, finished : (result : [[String : AnyObject]]?, error : NSError?) -> ()) {
         // 1.获取请求的URLString
         let urlString = "https://api.weibo.com/2/statuses/home_timeline.json"
         
@@ -97,7 +97,7 @@ extension NetWorkTool {
         guard let accessToken = UserAccountViewModel.shareInstance.account?.access_token else {
             return
         }
-        let parameters = ["access_token" : accessToken]
+        let parameters: [String: AnyObject] = ["access_token" : accessToken,"since_id" : since_id]
         
         // 3.发送请求
         request(.GET, urlString: urlString, parameters: parameters) { (result, error) -> () in

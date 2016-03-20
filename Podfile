@@ -4,3 +4,4 @@ use_frameworks!
 pod 'SVProgressHUD'
 pod 'AFNetworking', '~> 3.0'
 pod 'SDWebImage'
+pod 'MJRefresh'

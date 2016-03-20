@@ -8,6 +8,7 @@
 
 import UIKit
 import SDWebImage
+import MJRefresh
 
 class HomeTableViewController: BaseTableViewController {
 
@@ -38,7 +39,7 @@ class HomeTableViewController: BaseTableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: FJPopoverAnimatorWillDismiss, object: nil)
         
         // 3.请求数据
-        loadStatuses()
+        setupHeaderView()
     }
     
     deinit {
@@ -57,8 +58,10 @@ class HomeTableViewController: BaseTableViewController {
 }
 
 
-// MARK:- 设置导航栏的内容
+// MARK:- 设置UI的内容
 extension HomeTableViewController {
+    
+    ///设置导航栏的内容
     private func setupNavigationBar() {
         // 1.设置左侧的Item
         navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "navigationbar_friendattention", target: self, action: "leftItemClick")
@@ -72,6 +75,19 @@ extension HomeTableViewController {
         titleBtn.setTitle(name, forState: .Normal)
         titleBtn.addTarget(self, action: "titleBtnClick:", forControlEvents: .TouchUpInside)
         navigationItem.titleView = titleBtn
+    }
+    
+    ///添加headerView
+    private func setupHeaderView(){
+        
+        //1.创建headerView
+        let headerView = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "loadNewData")
+        headerView.setTitle("下拉刷新", forState: .Idle)
+        headerView.setTitle("释放更新", forState: .Pulling)
+        headerView.setTitle("加载中", forState: .Refreshing)
+        tableView.mj_header = headerView
+        //2.进入刷新状态
+        headerView.beginRefreshing()
     }
 }
 
@@ -148,9 +164,21 @@ extension HomeTableViewController {
 
 // MARK:- 网络请求
 extension HomeTableViewController {
+    
+    @objc private func loadNewData(){
+        loadStatuses()
+    }
+    
+    
     /// 请求首页数据
     private func loadStatuses() {
-        NetWorkTool.shareInstance.loadStatuses { (result, error) -> () in
+        
+        var since_id: Int = 0
+        if statusViewModels.first?.status?.id != nil{
+            since_id = (statusViewModels.first?.status?.id)!
+        }
+        
+        NetWorkTool.shareInstance.loadStatuses(since_id) { (result, error) -> () in
             // 1.错误校验
             if error != nil {
                 FJLog(error)
@@ -163,11 +191,14 @@ extension HomeTableViewController {
             }
             
             // 3.遍历数组,将数组中的字典转成模型对象
+            var models = [StatusViewModel]()
             for resultDict in resultArray {
                 let status = Status(dict: resultDict)
                 let statusViewModel = StatusViewModel(status: status)
-                self.statusViewModels.append(statusViewModel)
+                models.append(statusViewModel)
             }
+            
+            self.statusViewModels = models + self.statusViewModels
             
             // 4.缓存图片
             self.cacheImages()
@@ -200,8 +231,11 @@ extension HomeTableViewController {
         
         // 2.刷新表格
         dispatch_group_notify(group, dispatch_get_main_queue()) { () -> Void in
-            FJLog("刷新表格")
+//            FJLog("刷新表格")
+            //1.刷新表格
             self.tableView.reloadData()
+            //2.header停止刷新
+            self.tableView.mj_header.endRefreshing()
         }
     }
 

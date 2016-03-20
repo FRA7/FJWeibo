@@ -17,15 +17,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var defaultViewController: UIViewController{
         let isLogin = UserAccountViewModel.shareInstance.isLogin
-        return isLogin ? WelcomeViewController() : MainViewController()
+        return isLogin ? WelcomeViewController() :UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
 
-        // 0.设置AFN属性
-        let cache = NSURLCache(memoryCapacity: 4 * 1024 * 1024, diskCapacity: 20 * 1024 * 1024, diskPath: nil)
-        NSURLCache.setSharedURLCache(cache)
-        AFNetworkActivityIndicatorManager.sharedManager().enabled = true
+//        // 0.设置AFN属性
+//        let cache = NSURLCache(memoryCapacity: 4 * 1024 * 1024, diskCapacity: 20 * 1024 * 1024, diskPath: nil)
+//        NSURLCache.setSharedURLCache(cache)
+//        AFNetworkActivityIndicatorManager.sharedManager().enabled = true
 
         
         

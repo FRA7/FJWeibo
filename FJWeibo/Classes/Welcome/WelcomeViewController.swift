@@ -35,7 +35,7 @@ class WelcomeViewController: UIViewController {
         UIView.animateWithDuration(1.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 5.0, options: [], animations: { () -> Void in
             self.view.layoutIfNeeded()
             }) { (_) -> Void in
-                                UIApplication.sharedApplication().keyWindow?.rootViewController = MainViewController()
+                                UIApplication.sharedApplication().keyWindow?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
         }
         
         

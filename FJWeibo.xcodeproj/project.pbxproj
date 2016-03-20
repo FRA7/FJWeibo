@@ -7,19 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		150ABD4D1C848A5F00855E09 /* UITabBarButtonItem+Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150ABD4C1C848A5F00855E09 /* UITabBarButtonItem+Category.swift */; };
 		150ABD4F1C84930800855E09 /* TitleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150ABD4E1C84930800855E09 /* TitleButton.swift */; };
 		150F43AD1C91B64300797F24 /* QRCodeCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 150F43AC1C91B64300797F24 /* QRCodeCardViewController.swift */; };
-		1511D5261C9AF1FF004593A7 /* NSDate+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1511D5251C9AF1FF004593A7 /* NSDate+Extention.swift */; };
 		1511D5281C9AFDDD004593A7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1511D5271C9AFDDD004593A7 /* User.swift */; };
 		1511D52A1C9B059E004593A7 /* StatusViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1511D5291C9B059E004593A7 /* StatusViewModel.swift */; };
-		151BF8FB1C9D83CD008E3C08 /* PicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151BF8FA1C9D83CD008E3C08 /* PicCollectionView.swift */; };
-		151BF8FE1C9D912F008E3C08 /* PicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 151BF8FC1C9D912F008E3C08 /* PicCollectionViewCell.swift */; };
-		151BF8FF1C9D912F008E3C08 /* PicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 151BF8FD1C9D912F008E3C08 /* PicCollectionViewCell.xib */; };
 		1532DF5A1C900A4200170377 /* QRCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1532DF591C900A4200170377 /* QRCodeViewController.swift */; };
 		1532DF5C1C900A5700170377 /* QRCodeViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1532DF5B1C900A5700170377 /* QRCodeViewController.storyboard */; };
 		154FB6801C95447700D15CD1 /* UserAcount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154FB67F1C95447700D15CD1 /* UserAcount.swift */; };
-		154FB6821C95777B00D15CD1 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154FB6811C95777B00D15CD1 /* String+Extension.swift */; };
 		154FB6841C95A19700D15CD1 /* UserAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 154FB6831C95A19700D15CD1 /* UserAccountViewModel.swift */; };
 		156340E91C96DA2A00E5644D /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 156340E71C96DA2A00E5644D /* WelcomeViewController.swift */; };
 		156340EA1C96DA2A00E5644D /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 156340E81C96DA2A00E5644D /* WelcomeViewController.xib */; };
@@ -40,14 +34,26 @@
 		1589C1661C80838D00C27D73 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589C1651C80838D00C27D73 /* VisitorView.swift */; };
 		1589C16A1C808AEA00C27D73 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589C1691C808AEA00C27D73 /* UIView+AutoLayout.swift */; };
 		158EC87D1C93B50C0037D0AE /* NetWorkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EC87C1C93B50C0037D0AE /* NetWorkTool.swift */; };
-		15AB0F001C9B8DDA00F0CC57 /* HomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AB0EFE1C9B8DDA00F0CC57 /* HomeTableViewCell.swift */; };
-		15AB0F011C9B8DDA00F0CC57 /* HomeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15AB0EFF1C9B8DDA00F0CC57 /* HomeTableViewCell.xib */; };
 		15AE87D11C92FF3500378967 /* QAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AE87D01C92FF3500378967 /* QAuthViewController.swift */; };
 		15AE87D31C9300EB00378967 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15AE87D21C9300EB00378967 /* Common.swift */; };
-		15EE82DD1C853575004C1984 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EE82DC1C853575004C1984 /* PopoverViewController.swift */; };
+		15E9B6A01C9EC96C006FD4BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15E9B69F1C9EC96C006FD4BB /* Main.storyboard */; };
+		15E9B6A61C9EC9DF006FD4BB /* Meesage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15E9B6A51C9EC9DF006FD4BB /* Meesage.storyboard */; };
+		15E9B6A81C9EC9F3006FD4BB /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15E9B6A71C9EC9F3006FD4BB /* Discover.storyboard */; };
+		15E9B6AA1C9ECA04006FD4BB /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15E9B6A91C9ECA04006FD4BB /* Profile.storyboard */; };
+		15E9B6AC1C9ECA1B006FD4BB /* Null.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15E9B6AB1C9ECA1B006FD4BB /* Null.storyboard */; };
+		15E9B6B01C9ECECB006FD4BB /* VisitorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15E9B6AF1C9ECECB006FD4BB /* VisitorView.xib */; };
+		15E9B6B21C9ED33D006FD4BB /* QAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15E9B6B11C9ED33D006FD4BB /* QAuthViewController.xib */; };
+		15E9B6B41C9ED6F4006FD4BB /* PicCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B6B31C9ED6F4006FD4BB /* PicCollectionView.swift */; };
+		15E9B6B81C9EE1C7006FD4BB /* HomeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B6B71C9EE1C7006FD4BB /* HomeViewCell.swift */; };
+		15E9B6BA1C9EE451006FD4BB /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15E9B6B91C9EE451006FD4BB /* Home.storyboard */; };
+		15E9B6C11C9EE74A006FD4BB /* NSDate+Extention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B6BD1C9EE74A006FD4BB /* NSDate+Extention.swift */; };
+		15E9B6C21C9EE74A006FD4BB /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B6BE1C9EE74A006FD4BB /* String+Extension.swift */; };
+		15E9B6C31C9EE74A006FD4BB /* UIBarButtonItem-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B6BF1C9EE74A006FD4BB /* UIBarButtonItem-Extension.swift */; };
+		15E9B6C41C9EE74A006FD4BB /* UIButton-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B6C01C9EE74A006FD4BB /* UIButton-Extension.swift */; };
+		15E9B6C81C9EEABC006FD4BB /* PopoverAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B6C51C9EEABC006FD4BB /* PopoverAnimator.swift */; };
+		15E9B6C91C9EEABC006FD4BB /* PopoverPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B6C61C9EEABC006FD4BB /* PopoverPresentationController.swift */; };
+		15E9B6CA1C9EEABC006FD4BB /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15E9B6C71C9EEABC006FD4BB /* PopoverViewController.swift */; };
 		15EE82DF1C8535B3004C1984 /* PopoverViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 15EE82DE1C8535B3004C1984 /* PopoverViewController.storyboard */; };
-		15EE82E11C8539DE004C1984 /* PopoverPresentationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EE82E01C8539DE004C1984 /* PopoverPresentationController.swift */; };
-		15EE82E51C8580A6004C1984 /* PopoverAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15EE82E41C8580A6004C1984 /* PopoverAnimator.swift */; };
 		E3ECBFF723C75292CFDC3217 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1305C54216A0978703547E94 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,19 +76,13 @@
 
 /* Begin PBXFileReference section */
 		1305C54216A0978703547E94 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		150ABD4C1C848A5F00855E09 /* UITabBarButtonItem+Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITabBarButtonItem+Category.swift"; sourceTree = "<group>"; };
 		150ABD4E1C84930800855E09 /* TitleButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleButton.swift; sourceTree = "<group>"; };
 		150F43AC1C91B64300797F24 /* QRCodeCardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeCardViewController.swift; sourceTree = "<group>"; };
-		1511D5251C9AF1FF004593A7 /* NSDate+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extention.swift"; sourceTree = "<group>"; };
 		1511D5271C9AFDDD004593A7 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1511D5291C9B059E004593A7 /* StatusViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusViewModel.swift; sourceTree = "<group>"; };
-		151BF8FA1C9D83CD008E3C08 /* PicCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicCollectionView.swift; sourceTree = "<group>"; };
-		151BF8FC1C9D912F008E3C08 /* PicCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicCollectionViewCell.swift; sourceTree = "<group>"; };
-		151BF8FD1C9D912F008E3C08 /* PicCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PicCollectionViewCell.xib; sourceTree = "<group>"; };
 		1532DF591C900A4200170377 /* QRCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRCodeViewController.swift; sourceTree = "<group>"; };
 		1532DF5B1C900A5700170377 /* QRCodeViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = QRCodeViewController.storyboard; sourceTree = "<group>"; };
 		154FB67F1C95447700D15CD1 /* UserAcount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAcount.swift; sourceTree = "<group>"; };
-		154FB6811C95777B00D15CD1 /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		154FB6831C95A19700D15CD1 /* UserAccountViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAccountViewModel.swift; sourceTree = "<group>"; };
 		156340E71C96DA2A00E5644D /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		156340E81C96DA2A00E5644D /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
@@ -109,14 +109,26 @@
 		1589C1651C80838D00C27D73 /* VisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		1589C1691C808AEA00C27D73 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		158EC87C1C93B50C0037D0AE /* NetWorkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkTool.swift; sourceTree = "<group>"; };
-		15AB0EFE1C9B8DDA00F0CC57 /* HomeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeTableViewCell.swift; sourceTree = "<group>"; };
-		15AB0EFF1C9B8DDA00F0CC57 /* HomeTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeTableViewCell.xib; sourceTree = "<group>"; };
 		15AE87D01C92FF3500378967 /* QAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QAuthViewController.swift; sourceTree = "<group>"; };
 		15AE87D21C9300EB00378967 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
-		15EE82DC1C853575004C1984 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
+		15E9B69F1C9EC96C006FD4BB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		15E9B6A51C9EC9DF006FD4BB /* Meesage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Meesage.storyboard; sourceTree = "<group>"; };
+		15E9B6A71C9EC9F3006FD4BB /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
+		15E9B6A91C9ECA04006FD4BB /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		15E9B6AB1C9ECA1B006FD4BB /* Null.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Null.storyboard; sourceTree = "<group>"; };
+		15E9B6AF1C9ECECB006FD4BB /* VisitorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VisitorView.xib; sourceTree = "<group>"; };
+		15E9B6B11C9ED33D006FD4BB /* QAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QAuthViewController.xib; sourceTree = "<group>"; };
+		15E9B6B31C9ED6F4006FD4BB /* PicCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PicCollectionView.swift; sourceTree = "<group>"; };
+		15E9B6B71C9EE1C7006FD4BB /* HomeViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewCell.swift; sourceTree = "<group>"; };
+		15E9B6B91C9EE451006FD4BB /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
+		15E9B6BD1C9EE74A006FD4BB /* NSDate+Extention.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+Extention.swift"; sourceTree = "<group>"; };
+		15E9B6BE1C9EE74A006FD4BB /* String+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		15E9B6BF1C9EE74A006FD4BB /* UIBarButtonItem-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem-Extension.swift"; sourceTree = "<group>"; };
+		15E9B6C01C9EE74A006FD4BB /* UIButton-Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton-Extension.swift"; sourceTree = "<group>"; };
+		15E9B6C51C9EEABC006FD4BB /* PopoverAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverAnimator.swift; sourceTree = "<group>"; };
+		15E9B6C61C9EEABC006FD4BB /* PopoverPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverPresentationController.swift; sourceTree = "<group>"; };
+		15E9B6C71C9EEABC006FD4BB /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
 		15EE82DE1C8535B3004C1984 /* PopoverViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = PopoverViewController.storyboard; sourceTree = "<group>"; };
-		15EE82E01C8539DE004C1984 /* PopoverPresentationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverPresentationController.swift; sourceTree = "<group>"; };
-		15EE82E41C8580A6004C1984 /* PopoverAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverAnimator.swift; sourceTree = "<group>"; };
 		E870579D2A0D5A325D0F8BF5 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EEF924E874AD25910B6A97F4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,6 +206,7 @@
 				1570C7931C7FFB3E000F0437 /* AppDelegate.swift */,
 				1570C7C11C80024F000F0437 /* Classes */,
 				1570C7951C7FFB3E000F0437 /* ViewController.swift */,
+				15E9B69F1C9EC96C006FD4BB /* Main.storyboard */,
 				1570C79A1C7FFB3E000F0437 /* Assets.xcassets */,
 				1570C79F1C7FFB3E000F0437 /* Info.plist */,
 			);
@@ -229,6 +242,7 @@
 				1570C7C31C80024F000F0437 /* Discovery */,
 				1570C7C61C80024F000F0437 /* Me */,
 				1570C7C81C80024F000F0437 /* Tools */,
+				15E9B6BC1C9EE6FD006FD4BB /* Extension */,
 				1570C7C21C80024F000F0437 /* Common */,
 			);
 			path = Classes;
@@ -237,12 +251,9 @@
 		1570C7C21C80024F000F0437 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				150ABD4C1C848A5F00855E09 /* UITabBarButtonItem+Category.swift */,
 				150ABD4E1C84930800855E09 /* TitleButton.swift */,
 				15AE87D21C9300EB00378967 /* Common.swift */,
 				158EC87C1C93B50C0037D0AE /* NetWorkTool.swift */,
-				154FB6811C95777B00D15CD1 /* String+Extension.swift */,
-				1511D5251C9AF1FF004593A7 /* NSDate+Extention.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -251,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				1570C7CF1C8003B6000F0437 /* DiscoverTableViewController.swift */,
+				15E9B6A71C9EC9F3006FD4BB /* Discover.storyboard */,
 			);
 			path = Discovery;
 			sourceTree = "<group>";
@@ -262,6 +274,9 @@
 				1532DF581C900A2000170377 /* QRCode */,
 				15EE82DB1C853548004C1984 /* Popover */,
 				1570C7CB1C800320000F0437 /* HomeTableViewController.swift */,
+				15E9B6B91C9EE451006FD4BB /* Home.storyboard */,
+				15E9B6B71C9EE1C7006FD4BB /* HomeViewCell.swift */,
+				15E9B6B31C9ED6F4006FD4BB /* PicCollectionView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -273,6 +288,7 @@
 				1570C7C91C8002F4000F0437 /* MainViewController.swift */,
 				1570C7DA1C807980000F0437 /* BaseTableViewController.swift */,
 				1589C1651C80838D00C27D73 /* VisitorView.swift */,
+				15E9B6AF1C9ECECB006FD4BB /* VisitorView.xib */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -281,6 +297,7 @@
 			isa = PBXGroup;
 			children = (
 				1570C7D81C804EB4000F0437 /* ProfileTableViewController.swift */,
+				15E9B6A91C9ECA04006FD4BB /* Profile.storyboard */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -289,6 +306,7 @@
 			isa = PBXGroup;
 			children = (
 				1570C7CD1C800382000F0437 /* MessageTableViewController.swift */,
+				15E9B6A51C9EC9DF006FD4BB /* Meesage.storyboard */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -305,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				1570C7D41C8040B9000F0437 /* MainVCSettings.json */,
+				15E9B6AB1C9ECA1B006FD4BB /* Null.storyboard */,
 				1570C7D51C8040B9000F0437 /* NullViewController.swift */,
 			);
 			path = Resource;
@@ -316,11 +335,6 @@
 				157C22151C9AE31400834A06 /* Status.swift */,
 				1511D5271C9AFDDD004593A7 /* User.swift */,
 				1511D5291C9B059E004593A7 /* StatusViewModel.swift */,
-				15AB0EFF1C9B8DDA00F0CC57 /* HomeTableViewCell.xib */,
-				15AB0EFE1C9B8DDA00F0CC57 /* HomeTableViewCell.swift */,
-				151BF8FA1C9D83CD008E3C08 /* PicCollectionView.swift */,
-				151BF8FC1C9D912F008E3C08 /* PicCollectionViewCell.swift */,
-				151BF8FD1C9D912F008E3C08 /* PicCollectionViewCell.xib */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -328,6 +342,7 @@
 		15AE87CF1C92FF1F00378967 /* QAuth */ = {
 			isa = PBXGroup;
 			children = (
+				15E9B6B11C9ED33D006FD4BB /* QAuthViewController.xib */,
 				15AE87D01C92FF3500378967 /* QAuthViewController.swift */,
 				154FB67F1C95447700D15CD1 /* UserAcount.swift */,
 				154FB6831C95A19700D15CD1 /* UserAccountViewModel.swift */,
@@ -335,13 +350,24 @@
 			path = QAuth;
 			sourceTree = "<group>";
 		};
+		15E9B6BC1C9EE6FD006FD4BB /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				15E9B6BD1C9EE74A006FD4BB /* NSDate+Extention.swift */,
+				15E9B6BE1C9EE74A006FD4BB /* String+Extension.swift */,
+				15E9B6BF1C9EE74A006FD4BB /* UIBarButtonItem-Extension.swift */,
+				15E9B6C01C9EE74A006FD4BB /* UIButton-Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		15EE82DB1C853548004C1984 /* Popover */ = {
 			isa = PBXGroup;
 			children = (
-				15EE82DC1C853575004C1984 /* PopoverViewController.swift */,
+				15E9B6C51C9EEABC006FD4BB /* PopoverAnimator.swift */,
+				15E9B6C61C9EEABC006FD4BB /* PopoverPresentationController.swift */,
+				15E9B6C71C9EEABC006FD4BB /* PopoverViewController.swift */,
 				15EE82DE1C8535B3004C1984 /* PopoverViewController.storyboard */,
-				15EE82E01C8539DE004C1984 /* PopoverPresentationController.swift */,
-				15EE82E41C8580A6004C1984 /* PopoverAnimator.swift */,
 			);
 			path = Popover;
 			sourceTree = "<group>";
@@ -474,12 +500,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				151BF8FF1C9D912F008E3C08 /* PicCollectionViewCell.xib in Resources */,
+				15E9B6B01C9ECECB006FD4BB /* VisitorView.xib in Resources */,
 				15EE82DF1C8535B3004C1984 /* PopoverViewController.storyboard in Resources */,
+				15E9B6BA1C9EE451006FD4BB /* Home.storyboard in Resources */,
 				1570C7D61C8040B9000F0437 /* MainVCSettings.json in Resources */,
+				15E9B6A81C9EC9F3006FD4BB /* Discover.storyboard in Resources */,
+				15E9B6A61C9EC9DF006FD4BB /* Meesage.storyboard in Resources */,
+				15E9B6AA1C9ECA04006FD4BB /* Profile.storyboard in Resources */,
+				15E9B6A01C9EC96C006FD4BB /* Main.storyboard in Resources */,
 				1570C79B1C7FFB3E000F0437 /* Assets.xcassets in Resources */,
+				15E9B6B21C9ED33D006FD4BB /* QAuthViewController.xib in Resources */,
 				1532DF5C1C900A5700170377 /* QRCodeViewController.storyboard in Resources */,
-				15AB0F011C9B8DDA00F0CC57 /* HomeTableViewCell.xib in Resources */,
+				15E9B6AC1C9ECA1B006FD4BB /* Null.storyboard in Resources */,
 				156340EA1C96DA2A00E5644D /* WelcomeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -553,37 +585,37 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				15E9B6CA1C9EEABC006FD4BB /* PopoverViewController.swift in Sources */,
+				15E9B6C31C9EE74A006FD4BB /* UIBarButtonItem-Extension.swift in Sources */,
 				1570C7DB1C807980000F0437 /* BaseTableViewController.swift in Sources */,
 				1570C7D01C8003B6000F0437 /* DiscoverTableViewController.swift in Sources */,
-				15EE82DD1C853575004C1984 /* PopoverViewController.swift in Sources */,
+				15E9B6C11C9EE74A006FD4BB /* NSDate+Extention.swift in Sources */,
 				1532DF5A1C900A4200170377 /* QRCodeViewController.swift in Sources */,
 				1511D52A1C9B059E004593A7 /* StatusViewModel.swift in Sources */,
-				151BF8FB1C9D83CD008E3C08 /* PicCollectionView.swift in Sources */,
 				154FB6801C95447700D15CD1 /* UserAcount.swift in Sources */,
-				15AB0F001C9B8DDA00F0CC57 /* HomeTableViewCell.swift in Sources */,
 				1570C7D91C804EB4000F0437 /* ProfileTableViewController.swift in Sources */,
 				1570C7CE1C800382000F0437 /* MessageTableViewController.swift in Sources */,
 				1570C7CA1C8002F4000F0437 /* MainViewController.swift in Sources */,
-				15EE82E51C8580A6004C1984 /* PopoverAnimator.swift in Sources */,
+				15E9B6C81C9EEABC006FD4BB /* PopoverAnimator.swift in Sources */,
+				15E9B6C91C9EEABC006FD4BB /* PopoverPresentationController.swift in Sources */,
 				157C22161C9AE31400834A06 /* Status.swift in Sources */,
 				15AE87D31C9300EB00378967 /* Common.swift in Sources */,
 				1570C7961C7FFB3E000F0437 /* ViewController.swift in Sources */,
 				1570C7CC1C800320000F0437 /* HomeTableViewController.swift in Sources */,
-				154FB6821C95777B00D15CD1 /* String+Extension.swift in Sources */,
 				154FB6841C95A19700D15CD1 /* UserAccountViewModel.swift in Sources */,
+				15E9B6B81C9EE1C7006FD4BB /* HomeViewCell.swift in Sources */,
 				1589C1661C80838D00C27D73 /* VisitorView.swift in Sources */,
 				1570C7D71C8040B9000F0437 /* NullViewController.swift in Sources */,
 				150F43AD1C91B64300797F24 /* QRCodeCardViewController.swift in Sources */,
 				1589C16A1C808AEA00C27D73 /* UIView+AutoLayout.swift in Sources */,
+				15E9B6B41C9ED6F4006FD4BB /* PicCollectionView.swift in Sources */,
+				15E9B6C41C9EE74A006FD4BB /* UIButton-Extension.swift in Sources */,
 				156340E91C96DA2A00E5644D /* WelcomeViewController.swift in Sources */,
 				1511D5281C9AFDDD004593A7 /* User.swift in Sources */,
-				15EE82E11C8539DE004C1984 /* PopoverPresentationController.swift in Sources */,
-				151BF8FE1C9D912F008E3C08 /* PicCollectionViewCell.swift in Sources */,
 				15AE87D11C92FF3500378967 /* QAuthViewController.swift in Sources */,
-				150ABD4D1C848A5F00855E09 /* UITabBarButtonItem+Category.swift in Sources */,
 				158EC87D1C93B50C0037D0AE /* NetWorkTool.swift in Sources */,
-				1511D5261C9AF1FF004593A7 /* NSDate+Extention.swift in Sources */,
 				150ABD4F1C84930800855E09 /* TitleButton.swift in Sources */,
+				15E9B6C21C9EE74A006FD4BB /* String+Extension.swift in Sources */,
 				1570C7941C7FFB3E000F0437 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -708,7 +740,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = FJWeibo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "";
 				"OTHER_SWIFT_FLAGS[arch=*]" = "-D DEBUG -D COCOAPODS";
@@ -724,7 +756,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = FJWeibo/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = fraj7.com.FJWeibo;
 				PRODUCT_NAME = "$(TARGET_NAME)";

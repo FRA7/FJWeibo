@@ -12,123 +12,102 @@ typealias SuccessCallBack = (isSuccess: Bool) -> ()
 
 class UserAccountViewModel{
     /// 将视图模型设置到单例对象 --> 1.很多地方都会用 2.使用对象起来更多方便
-    static let shareInstance: UserAccountViewModel = UserAccountViewModel()
+    static let shareInstance : UserAccountViewModel = UserAccountViewModel()
     
     /// 用户账号的属性 --> UserAccountViewModel初衷就是对象account
-    var account: UserAccount?
+    var account : UserAccount?
     
     /// 用户判断是否登录成功的属性 --> 快速判断是否登录
-    var isLogin: Bool{
-        return account != nil && !isExpires
+    var isLogin : Bool {
+        return account != nil && !isExpire
     }
-    
-    
-    
-    var screen_name: String?{
-        return account?.screen_name
-    }
-    
-    var access_token: String?{
-        return account?.access_token
-    }
-    
-    
     
     /// 判断AccessToken是否过期 --> 快速判断是否过期
-    var isExpires: Bool{
-        
-        guard let expires_date = account?.expires_date else{
+    var isExpire : Bool {
+        guard let expire_date = account?.expires_date else {
             return true
         }
         
-        return expires_date.compare(NSDate()) == NSComparisonResult.OrderedAscending
+        return expire_date.compare(NSDate()) == NSComparisonResult.OrderedAscending
     }
     
-
+    /// 沙盒路径的计算属性 --> 归档&解档都需要用到路径
+    var accountPath : String {
+        let path = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true).first!
+        return (path as NSString).stringByAppendingPathComponent("accout.plist")
+    }
     
     // MARK:- 构造函数 : 创建出来ViewModel对象之后,拥有account
-    init(){
-        //1.读取对象
-        account = NSKeyedUnarchiver.unarchiveObjectWithFile(UserAccount.filePath) as? UserAccount
-
+    init () {
+        // 读取对象
+        account = NSKeyedUnarchiver.unarchiveObjectWithFile(accountPath) as? UserAccount
     }
-   
 }
-extension UserAccountViewModel{
-       
-    /**
-     利用RequestToken换取AccessToken
-     
-     - parameter code: RequestToken
-     */
-    func loadAccessToken(code: String, isSuccess: SuccessCallBack) {
 
-        NetWorkTool.shareInstance.loadAccessToken(code) { (result, error) -> () in
-            //1.错误校验
-            if error != nil{
+
+// MARK:- 对控制器中的代码进行封装
+extension UserAccountViewModel {
+    /// 请求AccessToken
+    func loadAccessToken(codeString : String, isSuccess : SuccessCallBack) {
+        NetWorkTool.shareInstance.loadAccessToken(codeString) { (result, error) -> () in
+            // 1.错误校验
+            if error != nil {
                 FJLog(error)
                 isSuccess(isSuccess: false)
                 return
             }
-
-            //2.获取结果字典
-            guard let accountDict = result else{
+            
+            // 2.获取结果字典
+            guard let accountDict = result else {
                 isSuccess(isSuccess: false)
                 return
             }
             
-            //3.字典转成模型对象
+            // 3.字典转成模型对象
             let account = UserAccount(dict: accountDict)
             
-            //4.请求用户信息
+            // 4.请求用户信息
             self.loadUserInfo(account, isSuccess: isSuccess)
-            
         }
-        
     }
     
-    /**
-     获取用户信息
-     
-     - parameter account: 授权模型
-     */
-    func loadUserInfo(account: UserAccount,isSuccess: SuccessCallBack){
-    
-        //1.获取accessToken和uid
-        guard let accessToken = account.access_token,uid = account.uid else{
+    /// 请求用户信息的函数
+    func loadUserInfo(account : UserAccount, isSuccess : SuccessCallBack) {
+        // 1.获取AccessToken和uid
+        guard let accessToken = account.access_token, uid = account.uid else {
             isSuccess(isSuccess: false)
             return
         }
         
-        //2.请求用户信息
+        // 2.请求用户信息
         NetWorkTool.shareInstance.loadUserInfo(accessToken, uid: uid) { (result, error) -> () in
-            //1.错误校验
-            if error != nil{
+            // 1.错误校验
+            if error != nil {
                 FJLog(error)
                 isSuccess(isSuccess: false)
                 return
             }
             
-            //2.获取字典结果
-            guard let userInfoDict = result else{
+            // 2.获取字典的结果
+            guard let userInfoDict = result else {
                 isSuccess(isSuccess: false)
                 return
             }
             
-            //3.从字典中获取头像的地址和昵称
+            // 3.从字典中获取头像的地址和昵称
             account.avatar_large = userInfoDict["avatar_large"] as? String
             account.screen_name = userInfoDict["screen_name"] as? String
             
-            //4.将账号的对象进行归档
-            FJLog(UserAccount.filePath)
-            NSKeyedArchiver.archiveRootObject(account, toFile: UserAccount.filePath)
+            // 4.将账号的对象进行归档
+            FJLog(self.accountPath)
+            NSKeyedArchiver.archiveRootObject(account, toFile: self.accountPath)
             
-            //5.将创建出的账号对象,赋值给account属性
+            // 5.将创建出来的用户账号对象,赋值给account属性
             self.account = account
             
-            //6.回调成功
+            // 6.回调成功(加载信息成功)
             isSuccess(isSuccess: true)
-            
         }
     }
+    
 }

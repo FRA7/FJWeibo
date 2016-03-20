@@ -10,26 +10,23 @@ import UIKit
 
 class User:NSObject {
     
-    //MARK: - 属性
+    // MARK:- 属性
+    /// 头像的URL地址
+    var profile_image_url : String?
+    /// 认证的类型
+    var verified_type : Int = -1
+    /// 昵称
+    var screen_name : String?
+    /// 会员等级
+    var mbrank : Int = 0
     
-    ///头像的Url地址
-    var profile_image_url: String?
-    ///昵称
-    var screen_name: String?
-    ///认证类型
-    var verified_type: Int  = -1
-    ///会员等级
-    var mbrank: Int = 0
     
-    //MARK: - 构造函数
-    init(dict:[String: AnyObject]) {
+    // MARK:- 构造函数
+    init(dict : [String : AnyObject]) {
         super.init()
         
         setValuesForKeysWithDictionary(dict)
     }
     
-    override func setValue(value: AnyObject?, forUndefinedKey key: String) {
-        
-        
-    }
+    override func setValue(value: AnyObject?, forUndefinedKey key: String) {}
 }

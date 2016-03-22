@@ -6,6 +6,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ComposeViewController" customModule="FJWeibo" customModuleProvider="target">
             <connections>
+                <outlet property="customTextView" destination="upH-fU-lni" id="vB4-Vo-eSw"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -13,7 +14,25 @@
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="upH-fU-lni" customClass="ComposeTextView" customModule="FJWeibo" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <connections>
+                        <outlet property="delegate" destination="-1" id="hV8-nG-fPx"/>
+                    </connections>
+                </textView>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="upH-fU-lni" secondAttribute="trailing" id="GMZ-tb-tmk"/>
+                <constraint firstItem="upH-fU-lni" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kxr-Cs-Jf9"/>
+                <constraint firstItem="upH-fU-lni" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="trl-MQ-XUV"/>
+                <constraint firstAttribute="bottom" secondItem="upH-fU-lni" secondAttribute="bottom" id="vET-Sv-f2N"/>
+            </constraints>
+            <point key="canvasLocation" x="355" y="280"/>
         </view>
     </objects>
 </document>

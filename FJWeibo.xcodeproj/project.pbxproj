@@ -34,6 +34,7 @@
 		15873FF01CA0E67F00AC3C9B /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15873FEE1CA0E67F00AC3C9B /* ComposeViewController.swift */; };
 		15873FF11CA0E67F00AC3C9B /* ComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15873FEF1CA0E67F00AC3C9B /* ComposeViewController.xib */; };
 		15873FF31CA0EAB200AC3C9B /* ComposeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15873FF21CA0EAB200AC3C9B /* ComposeTitleView.swift */; };
+		15873FF51CA0F05300AC3C9B /* ComposeTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15873FF41CA0F05300AC3C9B /* ComposeTextView.swift */; };
 		1589C1661C80838D00C27D73 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589C1651C80838D00C27D73 /* VisitorView.swift */; };
 		1589C16A1C808AEA00C27D73 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589C1691C808AEA00C27D73 /* UIView+AutoLayout.swift */; };
 		158EC87D1C93B50C0037D0AE /* NetWorkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EC87C1C93B50C0037D0AE /* NetWorkTool.swift */; };
@@ -112,6 +113,7 @@
 		15873FEE1CA0E67F00AC3C9B /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
 		15873FEF1CA0E67F00AC3C9B /* ComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeViewController.xib; sourceTree = "<group>"; };
 		15873FF21CA0EAB200AC3C9B /* ComposeTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeTitleView.swift; sourceTree = "<group>"; };
+		15873FF41CA0F05300AC3C9B /* ComposeTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeTextView.swift; sourceTree = "<group>"; };
 		1589C1651C80838D00C27D73 /* VisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		1589C1691C808AEA00C27D73 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		158EC87C1C93B50C0037D0AE /* NetWorkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkTool.swift; sourceTree = "<group>"; };
@@ -352,6 +354,7 @@
 				15873FEF1CA0E67F00AC3C9B /* ComposeViewController.xib */,
 				15873FEE1CA0E67F00AC3C9B /* ComposeViewController.swift */,
 				15873FF21CA0EAB200AC3C9B /* ComposeTitleView.swift */,
+				15873FF41CA0F05300AC3C9B /* ComposeTextView.swift */,
 			);
 			path = Compose;
 			sourceTree = "<group>";
@@ -618,6 +621,7 @@
 				15E9B6C81C9EEABC006FD4BB /* PopoverAnimator.swift in Sources */,
 				15E9B6C91C9EEABC006FD4BB /* PopoverPresentationController.swift in Sources */,
 				157C22161C9AE31400834A06 /* Status.swift in Sources */,
+				15873FF51CA0F05300AC3C9B /* ComposeTextView.swift in Sources */,
 				15AE87D31C9300EB00378967 /* Common.swift in Sources */,
 				15873FF31CA0EAB200AC3C9B /* ComposeTitleView.swift in Sources */,
 				1570C7961C7FFB3E000F0437 /* ViewController.swift in Sources */,

@@ -17,6 +17,7 @@ class HomeTableViewController: BaseTableViewController {
     private lazy var popoverAnimator : PopoverAnimator = PopoverAnimator() // 动画管理的对象
     private lazy var statusViewModels : [StatusViewModel] = [StatusViewModel]()
     private lazy var cellHeightCache : [String : CGFloat] = [String : CGFloat]()
+    private lazy var tipLabel: UILabel = UILabel()
     
     //记录菜单是否展开
     var isPresent :Bool = false
@@ -38,8 +39,14 @@ class HomeTableViewController: BaseTableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: FJPopoverAnimatorWillShow, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: FJPopoverAnimatorWillDismiss, object: nil)
         
+        //提示微博数量的label
+        setupTipLabel()
+        
         // 3.请求数据
         setupHeaderFooterView()
+        
+        
+        
     }
     
     deinit {
@@ -96,6 +103,19 @@ extension HomeTableViewController {
 //        footerView.beginRefreshing()
         
     }
+    private func setupTipLabel(){
+        //1.给label添加父控件
+        navigationController?.navigationBar.insertSubview(tipLabel, atIndex: 0)
+        //2.设置frame
+        tipLabel.frame = CGRect(x: 0, y: 12, width: UIScreen.mainScreen().bounds.width, height: 32)
+        //3.设置属性
+        tipLabel.backgroundColor = UIColor.orangeColor()
+        tipLabel.textColor = UIColor.whiteColor()
+        tipLabel.font = UIFont.systemFontOfSize(14)
+        tipLabel.textAlignment = .Center
+        tipLabel.hidden = true
+    }
+    
 }
 
 
@@ -227,12 +247,12 @@ extension HomeTableViewController {
             }
             
             // 4.缓存图片
-            self.cacheImages()
+            self.cacheImages(models)
         }
     }
     
     /// 缓存图片
-    private func cacheImages() {
+    private func cacheImages(models: [StatusViewModel]) {
         //0.创建group
         let group = dispatch_group_create()
         
@@ -263,7 +283,30 @@ extension HomeTableViewController {
             //2.header、footer停止刷新
             self.tableView.mj_header.endRefreshing()
 //            self.tableView.mj_footer.endRefreshing()
+            
+            //3.显示tipLabel
+            self.showTipLabelAni(models.count)
         }
     }
 
+    
+    private func showTipLabelAni(count: Int){
+        //1.设置label属性
+        tipLabel.hidden = false
+        tipLabel.text = count == 0 ? "没有新微薄" : "\(count)条新微博"
+        //2.执行动画
+        UIView.animateWithDuration(1.0, animations: { () -> Void in
+            
+            self.tipLabel.frame.origin.y = 44
+            }) { (_) -> Void in
+                
+                UIView.animateWithDuration(1.0, delay: 1.0, options: [], animations: { () -> Void in
+                    self.tipLabel.frame.origin.y = 12
+                    }, completion: { (_) -> Void in
+                        self.tipLabel.hidden = true
+                })
+        }
+        
+        
+    }
 }

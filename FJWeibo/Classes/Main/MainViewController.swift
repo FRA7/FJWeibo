@@ -68,6 +68,13 @@ extension MainViewController {
 
 extension MainViewController {
     @objc private func composeBtnClick() {
-        FJLog("composeBtnClick")
+        
+       //1.创建发布控制器
+        let composeVC = ComposeViewController()
+        //2.给发布控制器添加导航栏
+        let compNav = UINavigationController(rootViewController: composeVC)
+        //3.跳转控制器
+        presentViewController(compNav, animated: true, completion: nil)
+        
     }
 }

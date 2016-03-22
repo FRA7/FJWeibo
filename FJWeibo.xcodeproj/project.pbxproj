@@ -31,6 +31,9 @@
 		1570C7D91C804EB4000F0437 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7D81C804EB4000F0437 /* ProfileTableViewController.swift */; };
 		1570C7DB1C807980000F0437 /* BaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1570C7DA1C807980000F0437 /* BaseTableViewController.swift */; };
 		157C22161C9AE31400834A06 /* Status.swift in Sources */ = {isa = PBXBuildFile; fileRef = 157C22151C9AE31400834A06 /* Status.swift */; };
+		15873FF01CA0E67F00AC3C9B /* ComposeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15873FEE1CA0E67F00AC3C9B /* ComposeViewController.swift */; };
+		15873FF11CA0E67F00AC3C9B /* ComposeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 15873FEF1CA0E67F00AC3C9B /* ComposeViewController.xib */; };
+		15873FF31CA0EAB200AC3C9B /* ComposeTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 15873FF21CA0EAB200AC3C9B /* ComposeTitleView.swift */; };
 		1589C1661C80838D00C27D73 /* VisitorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589C1651C80838D00C27D73 /* VisitorView.swift */; };
 		1589C16A1C808AEA00C27D73 /* UIView+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1589C1691C808AEA00C27D73 /* UIView+AutoLayout.swift */; };
 		158EC87D1C93B50C0037D0AE /* NetWorkTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 158EC87C1C93B50C0037D0AE /* NetWorkTool.swift */; };
@@ -106,6 +109,9 @@
 		1570C7D81C804EB4000F0437 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		1570C7DA1C807980000F0437 /* BaseTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewController.swift; sourceTree = "<group>"; };
 		157C22151C9AE31400834A06 /* Status.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Status.swift; sourceTree = "<group>"; };
+		15873FEE1CA0E67F00AC3C9B /* ComposeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeViewController.swift; sourceTree = "<group>"; };
+		15873FEF1CA0E67F00AC3C9B /* ComposeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposeViewController.xib; sourceTree = "<group>"; };
+		15873FF21CA0EAB200AC3C9B /* ComposeTitleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeTitleView.swift; sourceTree = "<group>"; };
 		1589C1651C80838D00C27D73 /* VisitorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VisitorView.swift; sourceTree = "<group>"; };
 		1589C1691C808AEA00C27D73 /* UIView+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+AutoLayout.swift"; sourceTree = "<group>"; };
 		158EC87C1C93B50C0037D0AE /* NetWorkTool.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkTool.swift; sourceTree = "<group>"; };
@@ -239,6 +245,7 @@
 				1570C7C51C80024F000F0437 /* Main */,
 				1570C7C41C80024F000F0437 /* Home */,
 				1570C7C71C80024F000F0437 /* Message */,
+				15873FED1CA0E65400AC3C9B /* Compose */,
 				1570C7C31C80024F000F0437 /* Discovery */,
 				1570C7C61C80024F000F0437 /* Me */,
 				1570C7C81C80024F000F0437 /* Tools */,
@@ -337,6 +344,16 @@
 				1511D5291C9B059E004593A7 /* StatusViewModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		15873FED1CA0E65400AC3C9B /* Compose */ = {
+			isa = PBXGroup;
+			children = (
+				15873FEF1CA0E67F00AC3C9B /* ComposeViewController.xib */,
+				15873FEE1CA0E67F00AC3C9B /* ComposeViewController.swift */,
+				15873FF21CA0EAB200AC3C9B /* ComposeTitleView.swift */,
+			);
+			path = Compose;
 			sourceTree = "<group>";
 		};
 		15AE87CF1C92FF1F00378967 /* QAuth */ = {
@@ -511,6 +528,7 @@
 				1570C79B1C7FFB3E000F0437 /* Assets.xcassets in Resources */,
 				15E9B6B21C9ED33D006FD4BB /* QAuthViewController.xib in Resources */,
 				1532DF5C1C900A5700170377 /* QRCodeViewController.storyboard in Resources */,
+				15873FF11CA0E67F00AC3C9B /* ComposeViewController.xib in Resources */,
 				15E9B6AC1C9ECA1B006FD4BB /* Null.storyboard in Resources */,
 				156340EA1C96DA2A00E5644D /* WelcomeViewController.xib in Resources */,
 			);
@@ -591,6 +609,7 @@
 				1570C7D01C8003B6000F0437 /* DiscoverTableViewController.swift in Sources */,
 				15E9B6C11C9EE74A006FD4BB /* NSDate+Extention.swift in Sources */,
 				1532DF5A1C900A4200170377 /* QRCodeViewController.swift in Sources */,
+				15873FF01CA0E67F00AC3C9B /* ComposeViewController.swift in Sources */,
 				1511D52A1C9B059E004593A7 /* StatusViewModel.swift in Sources */,
 				154FB6801C95447700D15CD1 /* UserAcount.swift in Sources */,
 				1570C7D91C804EB4000F0437 /* ProfileTableViewController.swift in Sources */,
@@ -600,6 +619,7 @@
 				15E9B6C91C9EEABC006FD4BB /* PopoverPresentationController.swift in Sources */,
 				157C22161C9AE31400834A06 /* Status.swift in Sources */,
 				15AE87D31C9300EB00378967 /* Common.swift in Sources */,
+				15873FF31CA0EAB200AC3C9B /* ComposeTitleView.swift in Sources */,
 				1570C7961C7FFB3E000F0437 /* ViewController.swift in Sources */,
 				1570C7CC1C800320000F0437 /* HomeTableViewController.swift in Sources */,
 				154FB6841C95A19700D15CD1 /* UserAccountViewModel.swift in Sources */,

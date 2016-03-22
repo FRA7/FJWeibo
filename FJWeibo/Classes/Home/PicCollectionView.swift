@@ -81,7 +81,7 @@ extension PicCollectionView {
         
         // 3.四张图片
         if count == 4 {
-            let width = 2 * imageWH + padding
+            let width = 2 * imageWH + padding + 1
             let height = 2 * imageWH + padding
             return (width, height)
         }

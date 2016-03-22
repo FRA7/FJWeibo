@@ -273,8 +273,8 @@
 				157C22141C9AE2F900834A06 /* Model */,
 				1532DF581C900A2000170377 /* QRCode */,
 				15EE82DB1C853548004C1984 /* Popover */,
-				1570C7CB1C800320000F0437 /* HomeTableViewController.swift */,
 				15E9B6B91C9EE451006FD4BB /* Home.storyboard */,
+				1570C7CB1C800320000F0437 /* HomeTableViewController.swift */,
 				15E9B6B71C9EE1C7006FD4BB /* HomeViewCell.swift */,
 				15E9B6B31C9ED6F4006FD4BB /* PicCollectionView.swift */,
 			);

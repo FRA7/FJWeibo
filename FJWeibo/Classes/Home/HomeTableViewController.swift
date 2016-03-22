@@ -39,7 +39,7 @@ class HomeTableViewController: BaseTableViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: FJPopoverAnimatorWillDismiss, object: nil)
         
         // 3.请求数据
-        setupHeaderView()
+        setupHeaderFooterView()
     }
     
     deinit {
@@ -78,7 +78,7 @@ extension HomeTableViewController {
     }
     
     ///添加headerView
-    private func setupHeaderView(){
+    private func setupHeaderFooterView(){
         
         //1.创建headerView
         let headerView = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "loadNewData")
@@ -88,6 +88,13 @@ extension HomeTableViewController {
         tableView.mj_header = headerView
         //2.进入刷新状态
         headerView.beginRefreshing()
+
+//        //3.创建footerView
+//        let footerView = MJRefreshAutoFooter(refreshingTarget: self, refreshingAction: "loadMoreData")
+//        tableView.mj_footer = footerView
+//        //2.进入刷新状态
+//        footerView.beginRefreshing()
+        
     }
 }
 
@@ -134,6 +141,11 @@ extension HomeTableViewController {
         // 2.给cell设置数据
         cell.statusViewModel = statusViewModels[indexPath.row]
         
+        //3.判断是否是最后一个cell
+        if indexPath.row == statusViewModels.count - 1{
+            loadMoreData()
+        }
+        
         return cell
     }
     
@@ -166,27 +178,37 @@ extension HomeTableViewController {
 extension HomeTableViewController {
     
     @objc private func loadNewData(){
-        loadStatuses()
+        loadStatuses(true)
     }
     
+    @objc private func loadMoreData(){
+        loadStatuses(false)
+    }
     
     /// 请求首页数据
-    private func loadStatuses() {
+    private func loadStatuses(isNewData: Bool) {
         
         var since_id: Int = 0
-        if statusViewModels.first?.status?.id != nil{
-            since_id = (statusViewModels.first?.status?.id)!
+        var max_id:Int = 0
+        if isNewData{
+            since_id = statusViewModels.first?.status?.id ?? 0
+        }else{
+            max_id = statusViewModels.first?.status?.id ?? 0
+            max_id = max_id == 0 ? 0 : max_id - 1
         }
         
-        NetWorkTool.shareInstance.loadStatuses(since_id) { (result, error) -> () in
+     
+        
+        NetWorkTool.shareInstance.loadStatuses(since_id,max_id: max_id) { (result, error) -> () in
             // 1.错误校验
             if error != nil {
-                FJLog(error)
+               self.tableView.mj_header.endRefreshing()
                 return
             }
             
             // 2.判断数组是否有值
             guard let resultArray = result else {
+                self.tableView.mj_header.endRefreshing()
                 return
             }
             
@@ -197,8 +219,12 @@ extension HomeTableViewController {
                 let statusViewModel = StatusViewModel(status: status)
                 models.append(statusViewModel)
             }
-            
-            self.statusViewModels = models + self.statusViewModels
+            if isNewData{
+                self.statusViewModels = models + self.statusViewModels
+                
+            }else{
+                self.statusViewModels += models
+            }
             
             // 4.缓存图片
             self.cacheImages()
@@ -234,8 +260,9 @@ extension HomeTableViewController {
 //            FJLog("刷新表格")
             //1.刷新表格
             self.tableView.reloadData()
-            //2.header停止刷新
+            //2.header、footer停止刷新
             self.tableView.mj_header.endRefreshing()
+//            self.tableView.mj_footer.endRefreshing()
         }
     }
 

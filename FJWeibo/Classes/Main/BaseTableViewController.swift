@@ -33,12 +33,12 @@ extension BaseTableViewController {
         view = visitorView
         
         // 2.添加导航栏左右的item
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .Plain, target: self, action: "registerBtnClick")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .Plain, target: self, action: "loginBtnClick")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "注册", style: .Plain, target: self, action: #selector(BaseTableViewController.registerBtnClick))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "登录", style: .Plain, target: self, action: #selector(BaseTableViewController.loginBtnClick))
         
         // 3.监听访客视图中注册和登录按钮的点击
-        visitorView.registerBtn.addTarget(self, action: "test:name:", forControlEvents: .TouchUpInside)
-        visitorView.loginBtn.addTarget(self, action: "loginBtnClick", forControlEvents: .TouchUpInside)
+        visitorView.registerBtn.addTarget(self, action: #selector(registerBtnClick), forControlEvents: .TouchUpInside)
+        visitorView.loginBtn.addTarget(self, action: #selector(BaseTableViewController.loginBtnClick), forControlEvents: .TouchUpInside)
     }
 }
 

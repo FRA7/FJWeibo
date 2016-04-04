@@ -61,7 +61,7 @@ extension MainViewController {
         composeBtn.center = CGPoint(x: tabBar.bounds.width * 0.5, y: tabBar.bounds.height * 0.5)
         
         // 3.监听按钮的点击
-        composeBtn.addTarget(self, action: "composeBtnClick", forControlEvents: .TouchUpInside)
+        composeBtn.addTarget(self, action: #selector(MainViewController.composeBtnClick), forControlEvents: .TouchUpInside)
     }
 
 }

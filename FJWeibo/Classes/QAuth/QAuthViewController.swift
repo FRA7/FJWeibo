@@ -37,10 +37,10 @@ class QAuthViewController: UIViewController {
 extension QAuthViewController {
     private func setupNavigationBar() {
         // 1.设置左侧的Item
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: .Plain, target: self, action: "close")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "关闭", style: .Plain, target: self, action: #selector(QAuthViewController.close))
         
         // 2.设置右侧的Item
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "填充", style: .Plain, target: self, action: "autoFill")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "填充", style: .Plain, target: self, action: #selector(QAuthViewController.autoFill))
         
         // 3.设置标题
         title = "登录页面"

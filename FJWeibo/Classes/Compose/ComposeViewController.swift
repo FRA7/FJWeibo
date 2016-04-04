@@ -20,15 +20,31 @@ class ComposeViewController: UIViewController {
 
         setupNav()
 
+        
+        //监听键盘的弹出
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(keyboardWillChangeFrame), name: UIKeyboardWillChangeFrameNotification, object: nil)
+        
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        customTextView.becomeFirstResponder()
+    }
+    
+    deinit{
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+    }
+    
 }
  // MARK:- 设置UI相关
 extension ComposeViewController{
 
     private func setupNav(){
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: self, action: "cancelBtnClick")
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "发布", style: .Plain, target: self, action: "sendBtnClick")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "返回", style: .Plain, target: self, action: #selector(ComposeViewController.cancelBtnClick))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "发布", style: .Plain, target: self, action: #selector(ComposeViewController.sendBtnClick))
         navigationItem.rightBarButtonItem?.enabled = false
         
         //设置标题栏
@@ -48,6 +64,11 @@ extension ComposeViewController{
     
     @objc private func sendBtnClick(){
         FJLog("sendBtnClick")
+    }
+    
+    //监听键盘的弹出
+    @objc private func keyboardWillChangeFrame(note: NSNotification){
+        
     }
 }
 

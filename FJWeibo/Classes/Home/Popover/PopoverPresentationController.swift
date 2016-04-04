@@ -41,7 +41,7 @@ class PopoverPresentationController:UIPresentationController {
         v.backgroundColor = UIColor(white: 0.0, alpha: 0.3)
         v.frame = UIScreen.mainScreen().bounds
         //2.添加监听
-        let tap = UITapGestureRecognizer(target: self, action: "close")
+        let tap = UITapGestureRecognizer(target: self, action: #selector(PopoverPresentationController.close))
         v.addGestureRecognizer(tap)
         return v
     }()

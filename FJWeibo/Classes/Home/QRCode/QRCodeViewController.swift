@@ -269,7 +269,7 @@ extension QRCodeViewController:AVCaptureMetadataOutputObjectsDelegate{
         var point = CGPointZero
         
         CGPointMakeWithDictionaryRepresentation((array[index] as! CFDictionary), &point)
-        index++
+        index += 1
         
         let path = UIBezierPath()
         path.moveToPoint(point)
@@ -277,7 +277,7 @@ extension QRCodeViewController:AVCaptureMetadataOutputObjectsDelegate{
         while index < array.count{
             CGPointMakeWithDictionaryRepresentation((array[index] as! CFDictionary), &point)
             path.addLineToPoint(point)
-            index++
+            index += 1
             
         }
         

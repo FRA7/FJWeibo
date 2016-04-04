@@ -36,8 +36,8 @@ class HomeTableViewController: BaseTableViewController {
         setupNavigationBar()
         
         //4.注册通知
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: FJPopoverAnimatorWillShow, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "change", name: FJPopoverAnimatorWillDismiss, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomeTableViewController.change), name: FJPopoverAnimatorWillShow, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(HomeTableViewController.change), name: FJPopoverAnimatorWillDismiss, object: nil)
         
         //提示微博数量的label
         setupTipLabel()
@@ -71,16 +71,16 @@ extension HomeTableViewController {
     ///设置导航栏的内容
     private func setupNavigationBar() {
         // 1.设置左侧的Item
-        navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "navigationbar_friendattention", target: self, action: "leftItemClick")
+        navigationItem.leftBarButtonItem = UIBarButtonItem(imageName: "navigationbar_friendattention", target: self, action: #selector(HomeTableViewController.leftItemClick))
         
         // 2.设置右侧的Item
-        navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "navigationbar_pop", target: self, action: "rightItemClick")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(imageName: "navigationbar_pop", target: self, action: #selector(HomeTableViewController.rightItemClick))
         
         // 3.设置标题按钮
         
         let name = UserAccountViewModel.shareInstance.account?.screen_name
         titleBtn.setTitle(name, forState: .Normal)
-        titleBtn.addTarget(self, action: "titleBtnClick:", forControlEvents: .TouchUpInside)
+        titleBtn.addTarget(self, action: #selector(HomeTableViewController.titleBtnClick(_:)), forControlEvents: .TouchUpInside)
         navigationItem.titleView = titleBtn
     }
     
@@ -88,7 +88,7 @@ extension HomeTableViewController {
     private func setupHeaderFooterView(){
         
         //1.创建headerView
-        let headerView = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: "loadNewData")
+        let headerView = MJRefreshNormalHeader(refreshingTarget: self, refreshingAction: #selector(HomeTableViewController.loadNewData))
         headerView.setTitle("下拉刷新", forState: .Idle)
         headerView.setTitle("释放更新", forState: .Pulling)
         headerView.setTitle("加载中", forState: .Refreshing)
